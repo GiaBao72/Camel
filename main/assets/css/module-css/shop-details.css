@@ -359,6 +359,27 @@
   color: #fff;
 }
 
+/* Thanh toán button: same look as Add To Cart */
+.product-details-content .addto-cart-box ul li.cart-btn a.theme-btn.btn-one{
+  width: auto;
+  min-width: 150px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 30px;
+  border: none;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.product-details-content .addto-cart-box ul li.cart-btn a.theme-btn.btn-one:hover{
+  color: #fff;
+}
+
 .product-details-content .other-option li{
   position: relative;
   display: block;
