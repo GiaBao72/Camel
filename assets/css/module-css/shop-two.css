@@ -565,8 +565,34 @@
   }
 
   .shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content .rating,
-  .shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content .progress-box,
-  .shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content .cart-btn{
+  .shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content .progress-box{
     display: none !important;
+  }
+
+  .shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content .cart-btn{
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 100%;
+    margin-top: 8px;
+    padding-top: 0;
+    transform: none !important;
+  }
+
+  .shop-two.pb_50 .inner-container .shop-block-two .inner-box:hover .lower-content .cart-btn{
+    bottom: auto !important;
+  }
+
+  .shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content .cart-btn .theme-btn{
+    min-height: 34px;
+    height: 34px;
+    padding: 0 10px;
+    font-size: 12px;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
