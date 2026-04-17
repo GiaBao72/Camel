@@ -943,7 +943,16 @@
 		$('.lang-dropdown').removeClass('open');
 	});
 
-	
+	// mobile bottom nav active state
+	if($('.mobile-bottom-nav').length){
+		var file = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+		var key = 'home';
+		if(file.indexOf('shop') === 0){ key = 'shop'; }
+		else if(file.indexOf('cart') === 0 || file.indexOf('checkout') === 0){ key = 'cart'; }
+		else if(file.indexOf('account') === 0 || file.indexOf('login') === 0 || file.indexOf('signup') === 0){ key = 'account'; }
+		$('.mobile-bottom-nav .mobile-bottom-nav-item').removeClass('active');
+		$('.mobile-bottom-nav .mobile-bottom-nav-item[data-nav="'+key+'"]').addClass('active');
+	}
 
 })(window.jQuery);
 
