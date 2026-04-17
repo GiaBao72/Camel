@@ -1426,15 +1426,15 @@
                 }
 
                 var method = selectedPayment();
-                if (method === 'momo') {
-                    showMsg('Mô phỏng: Chuyển sang cổng MoMo... Đơn hàng #MO' + Date.now().toString().slice(-6) + ' đã tạo.', true);
-                } else if (method === 'vnpay') {
-                    showMsg('Mô phỏng: Chuyển sang cổng VNPay... Đơn hàng #VN' + Date.now().toString().slice(-6) + ' đã tạo.', true);
-                } else if (method === 'cod') {
-                    showMsg('Đặt hàng COD thành công. Nhân viên sẽ liên hệ xác nhận trong ít phút.', true);
-                } else {
+                if (!method) {
                     showMsg('Vui lòng chọn phương thức thanh toán.', false);
+                    return;
                 }
+
+                var amount = '56.430.000';
+                var orderId = 'OD' + Date.now().toString().slice(-8);
+                var url = 'payment-qr.html?method=' + encodeURIComponent(method) + '&order=' + encodeURIComponent(orderId) + '&amount=' + encodeURIComponent(amount);
+                window.location.href = url;
             });
         })();
     </script>
