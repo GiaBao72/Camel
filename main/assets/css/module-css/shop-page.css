@@ -527,6 +527,18 @@
   text-overflow: ellipsis;
 }
 
+@media only screen and (max-width: 767px){
+  .shop-page-section .wrapper.grid .inner-container .shop-block-two{
+    width: 50% !important;
+  }
+}
+
+@media only screen and (max-width: 499px){
+  .shop-page-section .wrapper.grid .inner-container .shop-block-two{
+    width: 50% !important;
+  }
+}
+
 
 
 

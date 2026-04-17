@@ -643,7 +643,8 @@
     justify-content: flex-start;
   }
 
-  .shop-page-section .wrapper .inner-container .shop-block-two{
+  .shop-page-section .wrapper .inner-container .shop-block-two,
+  .shop-page-section .wrapper.grid .inner-container .shop-block-two{
     width: 50% !important;
     padding: 0 4px;
   }
