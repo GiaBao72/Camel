@@ -313,6 +313,10 @@
   align-items: center;
 }
 
+.shop-page-section .item-shorting .left-column .filter-button{
+  display: none;
+}
+
 .shop-page-section .item-shorting .left-column .filter-button button{
   position: relative;
   display: inline-block;

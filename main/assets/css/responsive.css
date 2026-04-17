@@ -497,6 +497,10 @@
     padding: 14px 16px;
   }
 
+  .shop-page-section .item-shorting .left-column .filter-button{
+    display: block;
+  }
+
   .shop-page-section .item-shorting .left-column,
   .shop-page-section .item-shorting .right-column{
     width: 100%;
