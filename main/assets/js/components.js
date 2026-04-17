@@ -1,11 +1,13 @@
 const cache = {};
 
-const BASE = window.location.hostname.includes('github.io')
-    ? '/Camel-eComSite'
-    : '';
+function getRepoBase() {
+    if (!window.location.hostname.includes('github.io')) return '';
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    return parts.length ? `/${parts[0]}` : '';
+}
 
 function loadComponent(el, path) {
-    fetch(BASE + path)
+    fetch(path)
         .then(res => {
             if (!res.ok) throw new Error('Failed: ' + path);
             return res.text();
@@ -38,11 +40,18 @@ components.forEach(name => {
     customElements.define(`site-${name}`, class extends HTMLElement {
 
         connectedCallback() {
-            const BASE = window.location.hostname.includes('github.io')
-                ? ''
-                : '/main';
+            const repoBase = getRepoBase();
+            const rootPath = `${repoBase}/components/${name}.html`;
+            const legacyPath = `${repoBase}/main/components/${name}.html`;
 
-            loadComponent(this, `${BASE}/components/${name}.html`);
+            // Try root first (gh-pages subtree), fallback to /main/ (legacy).
+            fetch(rootPath)
+                .then(res => {
+                    if (!res.ok) throw new Error('Root path failed');
+                    return res.text();
+                })
+                .then(data => this.innerHTML = data)
+                .catch(() => loadComponent(this, legacyPath));
         }
     });
 });
