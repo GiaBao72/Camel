@@ -70,3 +70,21 @@
 - Verify kỹ thuật:
   - node --check main/assets/js/admin-mock.js: pass
   - node --check main/assets/js/script.js: pass
+
+## 2026-04-18 - P3 Admin Typography Readability
+
+### Bắt đầu
+- Scope: Đổi font trang admin sang kiểu cơ bản, dễ nhìn, trung tính.
+- Ràng buộc: Chỉ chỉnh style admin, không đụng storefront.
+- Checklist:
+  1. Đổi font-family global của admin sang sans-serif dễ đọc.
+  2. Giữ nguyên layout/chức năng.
+  3. Verify syntax JS và trạng thái git.
+
+### Kết quả P3
+- Đã đổi toàn bộ font admin sang Inter/Segoe UI/Roboto/Arial (sans-serif dễ đọc).
+- Đã cập nhật link Google Font trên các trang admin*.html.
+- Không thay đổi layout/chức năng, chỉ đổi typography.
+- Verify kỹ thuật:
+  - node --check main/assets/js/admin-mock.js: pass
+  - node --check main/assets/js/script.js: pass
