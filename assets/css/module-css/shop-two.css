@@ -503,6 +503,73 @@
   }
 }
 
+/* ===== Index shop-two (pb_50) grid + horizontal tabs ===== */
+.shop-two.pb_50 .tab-btns.tab-buttons.shop-tab-btn{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: 4px;
+}
+
+.shop-two.pb_50 .tab-btns.tab-buttons.shop-tab-btn::-webkit-scrollbar{
+  height: 6px;
+}
+
+.shop-two.pb_50 .tab-btns.tab-buttons.shop-tab-btn li{
+  float: none;
+  flex: 0 0 auto;
+}
+
+.shop-two.pb_50 .tabs-content .tab .inner-container{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.shop-two.pb_50 .inner-container .shop-block-two{
+  float: none;
+  width: auto;
+  padding: 0;
+}
+
+.shop-two.pb_50 .inner-container .shop-block-two .inner-box{
+  padding: 14px 14px 18px 14px;
+}
+
+.shop-two.pb_50 .inner-container .shop-block-two .inner-box .image-box .image{
+  max-width: 165px;
+}
+
+.shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content h4{
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content h5{
+  font-size: 18px;
+  line-height: 22px;
+}
+
+@media only screen and (max-width: 767px){
+  .shop-two.pb_50 .tabs-content .tab .inner-container{
+    gap: 10px;
+  }
+
+  .shop-two.pb_50 .inner-container .shop-block-two .inner-box{
+    padding: 12px 12px 16px 12px;
+  }
+
+  .shop-two.pb_50 .inner-container .shop-block-two .inner-box .image-box .image{
+    max-width: 145px;
+  }
+}
+
 
 
 
