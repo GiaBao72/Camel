@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camel Admin Orders</title>
+    <title>Quản trị đơn hàng Camel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,15 +13,15 @@
     <div class="admin-layout">
         <aside class="admin-sidebar neu-card" aria-label="Sidebar quản trị">
             <div>
-                <div class="admin-logo">Camel Admin</div>
-                <div class="admin-subtitle">Mock console · Neumorphism</div>
+                <div class="admin-logo">Quản trị Camel</div>
+                <div class="admin-subtitle">Bảng điều khiển mô phỏng · Giao diện mềm</div>
             </div>
             <nav class="admin-nav" aria-label="Điều hướng admin">
-                <a href="admin.html">Dashboard</a>
-                <a href="admin-products.html">Products</a>
-                <a class="active" href="admin-orders.html">Orders</a>
-                <a href="admin-users.html">Users</a>
-                <a href="admin-settings.html">Settings</a>
+                <a href="admin.html">Tổng quan</a>
+                <a href="admin-products.html">Sản phẩm</a>
+                <a class="active" href="admin-orders.html">Đơn hàng</a>
+                <a href="admin-users.html">Người dùng</a>
+                <a href="admin-settings.html">Cài đặt</a>
                 <a href="index.html">Về website</a>
             </nav>
             <button id="adminLogoutBtn" class="admin-btn danger" type="button">Đăng xuất</button>
@@ -39,16 +39,16 @@
             <section class="panel neu-card">
                 <div class="panel-head">
                     <h2>Cập nhật trạng thái đơn</h2>
-                    <button id="exportOrdersCsvBtn" class="admin-btn small" type="button">Export CSV</button>
+                    <button id="exportOrdersCsvBtn" class="admin-btn small" type="button">Xuất CSV</button>
                 </div>
                 <div class="filters two-col">
                     <input id="ordersSearchInput" type="text" placeholder="Tìm theo mã đơn hoặc tên khách...">
                     <select id="ordersStatusFilter">
                         <option value="all">Tất cả trạng thái</option>
-                        <option value="pending">pending</option>
-                        <option value="shipping">shipping</option>
-                        <option value="done">done</option>
-                        <option value="cancelled">cancelled</option>
+                        <option value="pending">Chờ xác nhận</option>
+                        <option value="shipping">Đang giao</option>
+                        <option value="done">Hoàn tất</option>
+                        <option value="cancelled">Đã hủy</option>
                     </select>
                 </div>
                 <div class="table-wrap">
@@ -84,3 +84,4 @@
     <script src="assets/js/admin-mock.js"></script>
 </body>
 </html>
+

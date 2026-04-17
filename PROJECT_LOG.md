@@ -88,3 +88,33 @@
 - Verify kỹ thuật:
   - node --check main/assets/js/admin-mock.js: pass
   - node --check main/assets/js/script.js: pass
+
+## 2026-04-18 - P4 Việt hóa toàn bộ trang Admin
+
+### Bắt đầu
+- Scope: Việt hóa toàn bộ giao diện admin (login/dashboard/products/orders/users/settings) và text hiển thị từ JS.
+- Ràng buộc: Không đụng storefront; chỉ đổi text/nhãn hiển thị, giữ nguyên logic.
+- Checklist:
+  1. Việt hóa title, menu, heading, label, button trên toàn bộ admin*.html.
+  2. Việt hóa text động trong admin-mock.js (badge trạng thái, role, thông báo, metadata).
+  3. Giữ value kỹ thuật (active/inactive/pending...) cho logic, chỉ đổi phần hiển thị.
+  4. Verify syntax và trạng thái git.
+
+### Kết quả P4
+- Đã Việt hóa toàn bộ menu điều hướng admin: Tổng quan, Sản phẩm, Đơn hàng, Người dùng, Cài đặt.
+- Đã Việt hóa title/meta/nhãn/nút trên tất cả trang admin:
+  - admin-login.html
+  - admin.html
+  - admin-products.html
+  - admin-orders.html
+  - admin-users.html
+  - admin-settings.html
+- Đã Việt hóa text động trong main/assets/js/admin-mock.js:
+  - Map hiển thị trạng thái: active/inactive/pending/shipping/done/cancelled -> tiếng Việt.
+  - Map hiển thị vai trò: owner/manager/staff -> tiếng Việt.
+  - Đổi nhãn nút động: Sửa, Đổi trạng thái, Chi tiết.
+  - Badge trạng thái trên Dashboard/Products/Orders/Users đều hiển thị tiếng Việt.
+- Giữ nguyên value kỹ thuật để không ảnh hưởng logic lọc/sắp xếp/cập nhật trạng thái.
+- Verify kỹ thuật:
+  - node --check main/assets/js/admin-mock.js: pass
+  - node --check main/assets/js/script.js: pass
