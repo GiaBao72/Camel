@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>Mô phỏng thanh toán QR</title>
+  <link href="assets/css/bootstrap.css" rel="stylesheet">
+  <link href="assets/css/font-awesome-all.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    body{background:#f6f7fb;font-family:'Be Vietnam Pro','Roboto',sans-serif;}
+    .qr-wrap{max-width:540px;margin:40px auto;padding:24px;background:#fff;border-radius:16px;box-shadow:0 14px 40px rgba(0,0,0,.12)}
+    .pay-badge{display:inline-flex;align-items:center;justify-content:center;min-width:80px;height:32px;border-radius:9px;font-size:13px;font-weight:800;padding:0 12px;text-transform:uppercase}
+    .momo{background:#a50064;color:#fff}.vnpay{background:#0055a4;color:#fff}.cod{background:#f6a623;color:#111}
+    .qr-box{display:flex;justify-content:center;margin:18px 0}
+    .qr-box img{width:240px;height:240px;border:10px solid #fff;box-shadow:0 8px 26px rgba(0,0,0,.15);border-radius:8px}
+    .meta{background:#f8f9ff;border:1px solid #ecefff;border-radius:12px;padding:14px}
+    .meta p{margin:0 0 8px;font-size:14px}.meta p:last-child{margin-bottom:0}
+    .actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+    .actions a,.actions button{min-height:42px}
+  </style>
+</head>
+<body>
+  <div class="qr-wrap">
+    <h3 class="mb_15">Thanh toán đơn hàng</h3>
+    <div class="mb_10">Phương thức: <span id="pay-badge" class="pay-badge">MOMO</span></div>
+    <div class="qr-box">
+      <img id="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=CAMEL_PAYMENT" alt="QR thanh toán">
+    </div>
+    <div class="meta">
+      <p><strong>Mã đơn:</strong> <span id="order-id">-</span></p>
+      <p><strong>Số tiền:</strong> <span id="amount">-</span> VNĐ</p>
+      <p><strong>Nội dung chuyển khoản:</strong> <span id="transfer-note">-</span></p>
+    </div>
+    <div class="actions">
+      <a class="theme-btn btn-one" href="checkout.html">Quay lại Checkout<span></span><span></span><span></span><span></span></a>
+      <a class="theme-btn" href="index.html" style="background:#222;color:#fff;">Về trang chủ<span></span><span></span><span></span><span></span></a>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var p = new URLSearchParams(window.location.search);
+      var method = (p.get('method') || 'momo').toLowerCase();
+      var order = p.get('order') || ('OD' + Date.now().toString().slice(-8));
+      var amount = p.get('amount') || '56.430.000';
+
+      var badge = document.getElementById('pay-badge');
+      var orderEl = document.getElementById('order-id');
+      var amountEl = document.getElementById('amount');
+      var noteEl = document.getElementById('transfer-note');
+      var qrImg = document.getElementById('qr-image');
+
+      var label = 'MOMO';
+      var cls = 'momo';
+      if(method === 'vnpay'){ label = 'VNPAY'; cls = 'vnpay'; }
+      if(method === 'cod'){ label = 'COD'; cls = 'cod'; }
+
+      badge.textContent = label;
+      badge.className = 'pay-badge ' + cls;
+      orderEl.textContent = order;
+      amountEl.textContent = amount;
+      noteEl.textContent = label + ' ' + order;
+
+      var qrData = 'PAY:' + label + '|ORDER:' + order + '|AMOUNT:' + amount;
+      qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent(qrData);
+    })();
+  </script>
+</body>
+</html>
