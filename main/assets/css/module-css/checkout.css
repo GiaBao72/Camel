@@ -229,6 +229,42 @@
   line-height: 24px;
 }
 
+.checkout-section .order-info .payment-option .payment-label-row{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkout-section .order-info .payment-option .payment-label-row .pay-logo{
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 62px;
+  height: 28px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  padding: 0 10px;
+  text-transform: uppercase;
+}
+
+.checkout-section .order-info .payment-option .payment-label-row .momo-logo{
+  background: #A50064;
+  color: #fff;
+}
+
+.checkout-section .order-info .payment-option .payment-label-row .vnpay-logo{
+  background: #0055A4;
+  color: #fff;
+}
+
+.checkout-section .order-info .payment-option .payment-label-row .cod-logo{
+  background: #F6A623;
+  color: #111;
+}
+
 .checkout-section .order-info .payment-option .check-box label:before{
   width: 14px;
   height: 14px;
