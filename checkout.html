@@ -1018,76 +1018,70 @@
         <section class="checkout-section pb_80">
             <div class="large-container">
                 <div class="sec-title centred pb_30">
-                    <h2>Checkout</h2>
+                    <h2>Thanh toán</h2>
                 </div>
                 <div class="row clearfix">
                     <div class="col-lg-8 col-md-12 col-sm-12 billing-column">
                         <div class="billing-content mr_30">
-                            <h3>Billing Details</h3>
+                            <h3>Thông tin người mua</h3>
                             <div class="form-inner">
                                 <form method="post" action="checkout.html">
                                     <div class="row clearfix">
                                         <div class="col-lg-6 col-md-6 col-sm-12 field-column">
                                             <div class="form-group">
-                                                <label>First Name<span>*</span></label>
-                                                <input type="text" name="fname">
+                                                <label>Họ<span>*</span></label>
+                                                <input type="text" name="fname" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 field-column">
                                             <div class="form-group">
-                                                <label>Last Name<span>*</span></label>
-                                                <input type="text" name="lname">
+                                                <label>Tên<span>*</span></label>
+                                                <input type="text" name="lname" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 field-column">
                                             <div class="form-group">
-                                                <label>Email Address<span>*</span></label>
-                                                <input type="email" name="email">
+                                                <label>Email<span>*</span></label>
+                                                <input type="email" name="email" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 field-column">
                                             <div class="form-group">
-                                                <label>Phone Number<span>*</span></label>
-                                                <input type="text" name="phone">
+                                                <label>Số điện thoại<span>*</span></label>
+                                                <input type="text" name="phone" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 field-column">
                                             <div class="form-group">
-                                                <label>Country<span>*</span></label>
+                                                <label>Tỉnh/Thành phố<span>*</span></label>
                                                 <div class="select-box">
-                                                    <select class="wide">
-                                                        <option data-display="Select Country">Select Country</option>
-                                                        <option value="1">Australia</option>
-                                                        <option value="2">Belgium</option>
-                                                        <option value="3">Canada</option>
-                                                        <option value="4">China</option>
-                                                        <option value="5">France</option>
-                                                        <option value="6">Germany</option>
-                                                        <option value="7">Malaysia</option>
-                                                        <option value="8">Mexico</option>
-                                                        <option value="9">Russia</option>
-                                                        <option value="10">Switzerland</option>
-                                                        <option value="11">Turkey</option>
-                                                        <option value="12">United Kingdom</option>
+                                                    <select class="wide" required>
+                                                        <option data-display="Chọn tỉnh/thành">Chọn tỉnh/thành</option>
+                                                        <option value="1">Hà Nội</option>
+                                                        <option value="2">TP. Hồ Chí Minh</option>
+                                                        <option value="3">Đà Nẵng</option>
+                                                        <option value="4">Hải Phòng</option>
+                                                        <option value="5">Cần Thơ</option>
+                                                        <option value="6">Khác</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 field-column">
                                             <div class="form-group">
-                                                <label>Address<span>*</span></label>
-                                                <input type="text" name="address">
+                                                <label>Địa chỉ nhận hàng<span>*</span></label>
+                                                <input type="text" name="address" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 field-column">
                                             <div class="form-group">
-                                                <label>Town / City<span>*</span></label>
-                                                <input type="text" name="city">
+                                                <label>Quận/Huyện<span>*</span></label>
+                                                <input type="text" name="city" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 field-column">
                                             <div class="form-group">
-                                                <label>Postcode / ZIP<span>*</span></label>
+                                                <label>Mã bưu chính</label>
                                                 <input type="text" name="zip">
                                             </div>
                                         </div>
@@ -1095,7 +1089,7 @@
                                             <div class="form-group">
                                                 <div class="check-box">
                                                     <input class="check" type="checkbox" id="checkbox1">
-                                                    <label for="checkbox1">Create an account?</label>
+                                                    <label for="checkbox1">Tạo tài khoản?</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -1103,21 +1097,21 @@
                                 </form>
                             </div>
                             <div class="other-address">
-                                <h3>Shipping Address</h3>
+                                <h3>Ghi chú giao hàng</h3>
                                 <div class="check-box">
                                     <input class="check" type="checkbox" id="checkbox2">
-                                    <label for="checkbox2">Ship to a different address</label>
+                                    <label for="checkbox2">Giao tới địa chỉ khác</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12 order-column">
                         <div class="order-box">
-                            <h3>Order Summary</h3>
+                            <h3>Tóm tắt đơn hàng</h3>
                             <div class="order-info">
                                 <div class="title-box">
-                                    <span class="text">PROduct</span>
-                                    <span class="text">total</span>
+                                    <span class="text">Sản phẩm</span>
+                                    <span class="text">Tổng</span>
                                 </div>
                                 <div class="order-product">
                                     <div class="single-item">
@@ -1147,46 +1141,45 @@
                                 </div>
                                 <ul class="cost-box">
                                     <li>
-                                        <h4><span>Subtotal</span></h4>
-                                        <h4>$2149.97</h4>
+                                        <h4><span>Tạm tính</span></h4>
+                                        <h4>56.430.000 VNĐ</h4>
                                     </li>
                                     <li>
-                                        <h4><span>Free Shipping</span></h4>
-                                        <h4><span>$0</span></h4>
+                                        <h4><span>Phí vận chuyển</span></h4>
+                                        <h4><span>0 VNĐ</span></h4>
                                     </li>
                                 </ul>
                                 <div class="total-box">
-                                    <h4><span>Total</span></h4>
-                                    <h4>$2149.98</h4>
+                                    <h4><span>Tổng thanh toán</span></h4>
+                                    <h4>56.430.000 VNĐ</h4>
                                 </div>
-                                <div class="payment-option">
+                                <div class="payment-option" id="payment-method-box">
                                     <div class="bank-payment">
                                         <div class="check-box mb_12">
-                                            <input class="check" type="radio" id="checkbox3" name="same" checked>
-                                            <label for="checkbox3">Direct Bank Transfer</label>
+                                            <input class="check" type="radio" id="pay-momo" name="payment_method" value="momo" checked>
+                                            <label for="pay-momo">Thanh toán MoMo</label>
                                         </div>
-                                        <p>Make your payment directly into our bank account. Please use your Order ID as
-                                            payment reference.</p>
+                                        <p>Quét mã QR MoMo để thanh toán. Đơn hàng sẽ được xác nhận ngay sau khi thanh toán thành công.</p>
                                     </div>
                                     <ul class="other-payment">
                                         <li>
                                             <div class="check-box mb_12">
-                                                <input class="check" type="radio" id="checkbox4" name="same">
-                                                <label for="checkbox4">Cash on Delivery</label>
+                                                <input class="check" type="radio" id="pay-vnpay" name="payment_method" value="vnpay">
+                                                <label for="pay-vnpay">Thanh toán VNPay</label>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="check-box mb_12">
-                                                <input class="check" type="radio" id="checkbox5" name="same">
-                                                <label for="checkbox5">Credit/Debit Cards or Paypal</label>
+                                                <input class="check" type="radio" id="pay-cod" name="payment_method" value="cod">
+                                                <label for="pay-cod">Thanh toán khi nhận hàng (COD)</label>
                                             </div>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="btn-box pt_30">
-                                    <button type="submit" class="theme-btn">Make
-                                        Payment<span></span><span></span><span></span><span></span></button>
+                                    <button type="button" id="btn-place-order" class="theme-btn">Xác nhận đặt hàng<span></span><span></span><span></span><span></span></button>
                                 </div>
+                                <p id="checkout-message" class="mt_15" style="font-weight:600;"></p>
                             </div>
                         </div>
                     </div>
@@ -1390,6 +1383,58 @@
 
     <!-- main-js -->
     <script src="assets/js/script.js"></script>
+    <script>
+        (function () {
+            function val(name) {
+                var el = document.querySelector('[name="' + name + '"]');
+                return el ? (el.value || '').trim() : '';
+            }
+
+            function selectedPayment() {
+                var el = document.querySelector('input[name="payment_method"]:checked');
+                return el ? el.value : '';
+            }
+
+            function showMsg(text, ok) {
+                var box = document.getElementById('checkout-message');
+                if (!box) return;
+                box.textContent = text;
+                box.style.color = ok ? '#1f9d55' : '#d63636';
+            }
+
+            var btn = document.getElementById('btn-place-order');
+            if (!btn) return;
+
+            btn.addEventListener('click', function () {
+                var required = [
+                    ['Họ', val('fname')],
+                    ['Tên', val('lname')],
+                    ['Email', val('email')],
+                    ['Số điện thoại', val('phone')],
+                    ['Địa chỉ nhận hàng', val('address')],
+                    ['Quận/Huyện', val('city')]
+                ];
+
+                var missing = required.filter(function (x) { return !x[1]; }).map(function (x) { return x[0]; });
+
+                if (missing.length) {
+                    showMsg('Vui lòng điền đầy đủ: ' + missing.join(', ') + '.', false);
+                    return;
+                }
+
+                var method = selectedPayment();
+                if (method === 'momo') {
+                    showMsg('Mô phỏng: Chuyển sang cổng MoMo... Đơn hàng #MO' + Date.now().toString().slice(-6) + ' đã tạo.', true);
+                } else if (method === 'vnpay') {
+                    showMsg('Mô phỏng: Chuyển sang cổng VNPay... Đơn hàng #VN' + Date.now().toString().slice(-6) + ' đã tạo.', true);
+                } else if (method === 'cod') {
+                    showMsg('Đặt hàng COD thành công. Nhân viên sẽ liên hệ xác nhận trong ít phút.', true);
+                } else {
+                    showMsg('Vui lòng chọn phương thức thanh toán.', false);
+                }
+            });
+        })();
+    </script>
 
 </body><!-- End of .page_wrapper -->
 
