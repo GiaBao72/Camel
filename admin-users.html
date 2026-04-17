@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camel Admin Users</title>
+    <title>Quản trị người dùng Camel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,15 +13,15 @@
     <div class="admin-layout">
         <aside class="admin-sidebar neu-card" aria-label="Sidebar quản trị">
             <div>
-                <div class="admin-logo">Camel Admin</div>
-                <div class="admin-subtitle">Mock console · Neumorphism</div>
+                <div class="admin-logo">Quản trị Camel</div>
+                <div class="admin-subtitle">Bảng điều khiển mô phỏng · Giao diện mềm</div>
             </div>
             <nav class="admin-nav" aria-label="Điều hướng admin">
-                <a href="admin.html">Dashboard</a>
-                <a href="admin-products.html">Products</a>
-                <a href="admin-orders.html">Orders</a>
-                <a class="active" href="admin-users.html">Users</a>
-                <a href="admin-settings.html">Settings</a>
+                <a href="admin.html">Tổng quan</a>
+                <a href="admin-products.html">Sản phẩm</a>
+                <a href="admin-orders.html">Đơn hàng</a>
+                <a class="active" href="admin-users.html">Người dùng</a>
+                <a href="admin-settings.html">Cài đặt</a>
                 <a href="index.html">Về website</a>
             </nav>
             <button id="adminLogoutBtn" class="admin-btn danger" type="button">Đăng xuất</button>
@@ -55,9 +55,9 @@
                         <div class="field">
                             <label for="userRole">Vai trò</label>
                             <select id="userRole">
-                                <option value="owner">owner</option>
-                                <option value="manager">manager</option>
-                                <option value="staff">staff</option>
+                                <option value="owner">Chủ hệ thống</option>
+                                <option value="manager">Quản lý</option>
+                                <option value="staff">Nhân viên</option>
                             </select>
                         </div>
                     </div>
@@ -65,18 +65,18 @@
                         <div class="field">
                             <label for="userStatus">Trạng thái</label>
                             <select id="userStatus">
-                                <option value="active">active</option>
-                                <option value="inactive">inactive</option>
+                                <option value="active">Đang hoạt động</option>
+                                <option value="inactive">Ngưng hoạt động</option>
                             </select>
                         </div>
                     </div>
-                    <button class="admin-btn primary" type="submit">Thêm user</button>
+                    <button class="admin-btn primary" type="submit">Thêm người dùng</button>
                     <div id="userFormNotice" class="admin-footer-note" aria-live="polite"></div>
                 </form>
             </section>
 
             <section class="panel neu-card" style="margin-top:16px;">
-                <h2>Danh sách user</h2>
+                <h2>Danh sách người dùng</h2>
                 <div class="table-wrap">
                     <table class="admin-table">
                         <thead>
@@ -98,3 +98,4 @@
     <script src="assets/js/admin-mock.js"></script>
 </body>
 </html>
+

@@ -78,7 +78,7 @@
             users: [
                 {
                     id: 'U-101',
-                    name: 'Admin Demo',
+                    name: 'Quản trị viên mẫu',
                     email: 'admin@camel.local',
                     role: 'owner',
                     status: 'active'
@@ -228,7 +228,7 @@
         var session = getSession();
         var holder = document.getElementById('adminSessionUser');
         if (holder && session) {
-            holder.textContent = session.name + ' (' + session.role + ')';
+            holder.textContent = session.name + ' (' + roleLabel(session.role) + ')';
         }
     }
 
@@ -245,6 +245,23 @@
         if (status === 'pending') return 'warning';
         if (status === 'shipping') return 'info';
         return 'danger';
+    }
+
+    function statusLabel(status) {
+        if (status === 'active') return 'Đang hoạt động';
+        if (status === 'inactive') return 'Ngưng hoạt động';
+        if (status === 'pending') return 'Chờ xác nhận';
+        if (status === 'shipping') return 'Đang giao';
+        if (status === 'done') return 'Hoàn tất';
+        if (status === 'cancelled') return 'Đã hủy';
+        return status || '';
+    }
+
+    function roleLabel(role) {
+        if (role === 'owner') return 'Chủ hệ thống';
+        if (role === 'manager') return 'Quản lý';
+        if (role === 'staff') return 'Nhân viên';
+        return role || '';
     }
 
     function escapeHtml(text) {
@@ -275,7 +292,7 @@
             if (email === 'admin@camel.local' && password === '123456') {
                 setSession({
                     email: email,
-                    name: 'Admin Demo',
+                    name: 'Quản trị viên mẫu',
                     role: 'owner',
                     loginAt: new Date().toISOString()
                 });
@@ -344,7 +361,7 @@
         ctx.fill();
 
         ctx.fillStyle = '#1E2938';
-        ctx.font = '12px Space Mono';
+        ctx.font = '12px Inter';
         series.labels.forEach(function (label, idx2) {
             var xLabel = padding.left + (plotWidth / (series.labels.length - 1 || 1)) * idx2;
             ctx.fillText(label, xLabel - 14, height - 12);
@@ -394,7 +411,7 @@
                     '<td>' + escapeHtml(order.id) + '</td>' +
                     '<td>' + escapeHtml(order.customer) + '</td>' +
                     '<td>' + currency(order.total) + '</td>' +
-                    '<td><span class="badge ' + statusBadge(order.status) + '">' + escapeHtml(order.status) + '</span></td>' +
+                    '<td><span class="badge ' + statusBadge(order.status) + '">' + escapeHtml(statusLabel(order.status)) + '</span></td>' +
                     '<td>' + escapeHtml(order.date) + '</td>' +
                     '</tr>';
             }).join('');
@@ -456,7 +473,7 @@
             editStock.value = product.stock;
             editStatus.value = product.status;
             editImage.value = product.image || '';
-            if (editNotice) editNotice.textContent = 'Đang chỉnh: ' + product.id;
+            if (editNotice) editNotice.textContent = 'Đang sửa: ' + product.id;
         }
 
         function resetEditForm(message) {
@@ -502,11 +519,11 @@
                         '<td>' + escapeHtml(p.category) + '</td>' +
                         '<td>' + currency(p.price) + '</td>' +
                         '<td>' + p.stock + '</td>' +
-                        '<td><span class="badge ' + statusBadge(p.status) + '">' + escapeHtml(p.status) + '</span></td>' +
+                        '<td><span class="badge ' + statusBadge(p.status) + '">' + escapeHtml(statusLabel(p.status)) + '</span></td>' +
                         '<td>' + imageCell + '</td>' +
                         '<td><div class="table-actions">' +
-                        '<button class="admin-btn small" data-action="edit" data-id="' + escapeHtml(p.id) + '">Edit</button>' +
-                        '<button class="admin-btn small" data-action="toggle" data-id="' + escapeHtml(p.id) + '">Toggle</button>' +
+                        '<button class="admin-btn small" data-action="edit" data-id="' + escapeHtml(p.id) + '">Sửa</button>' +
+                        '<button class="admin-btn small" data-action="toggle" data-id="' + escapeHtml(p.id) + '">Đổi trạng thái</button>' +
                         '<button class="admin-btn small danger" data-action="delete" data-id="' + escapeHtml(p.id) + '">Xóa</button>' +
                         '</div></td>' +
                         '</tr>';
@@ -700,16 +717,16 @@
                     '<td>' + escapeHtml(order.id) + '</td>' +
                     '<td>' + escapeHtml(order.customer) + '</td>' +
                     '<td>' + currency(order.total) + '</td>' +
-                    '<td><span class="badge ' + statusBadge(order.status) + '">' + escapeHtml(order.status) + '</span></td>' +
+                    '<td><span class="badge ' + statusBadge(order.status) + '">' + escapeHtml(statusLabel(order.status)) + '</span></td>' +
                     '<td>' + escapeHtml(order.date) + '</td>' +
                     '<td><div class="table-actions">' +
                     '<select class="order-status-select" data-id="' + escapeHtml(order.id) + '">' +
-                    '<option value="pending" ' + (order.status === 'pending' ? 'selected' : '') + '>pending</option>' +
-                    '<option value="shipping" ' + (order.status === 'shipping' ? 'selected' : '') + '>shipping</option>' +
-                    '<option value="done" ' + (order.status === 'done' ? 'selected' : '') + '>done</option>' +
-                    '<option value="cancelled" ' + (order.status === 'cancelled' ? 'selected' : '') + '>cancelled</option>' +
+                    '<option value="pending" ' + (order.status === 'pending' ? 'selected' : '') + '>Chờ xác nhận</option>' +
+                    '<option value="shipping" ' + (order.status === 'shipping' ? 'selected' : '') + '>Đang giao</option>' +
+                    '<option value="done" ' + (order.status === 'done' ? 'selected' : '') + '>Hoàn tất</option>' +
+                    '<option value="cancelled" ' + (order.status === 'cancelled' ? 'selected' : '') + '>Đã hủy</option>' +
                     '</select>' +
-                    '<button class="admin-btn small" data-action="detail" data-id="' + escapeHtml(order.id) + '">Detail</button>' +
+                    '<button class="admin-btn small" data-action="detail" data-id="' + escapeHtml(order.id) + '">Chi tiết</button>' +
                     '</div></td>' +
                     '</tr>';
             }).join('');
@@ -748,7 +765,7 @@
                 '<div class="simple-item"><strong>Mã đơn:</strong> ' + escapeHtml(order.id) + '</div>' +
                 '<div class="simple-item"><strong>Khách hàng:</strong> ' + escapeHtml(order.customer) + '</div>' +
                 '<div class="simple-item"><strong>Ngày:</strong> ' + escapeHtml(order.date) + '</div>' +
-                '<div class="simple-item"><strong>Trạng thái:</strong> <span class="badge ' + statusBadge(order.status) + '">' + escapeHtml(order.status) + '</span></div>' +
+                '<div class="simple-item"><strong>Trạng thái:</strong> <span class="badge ' + statusBadge(order.status) + '">' + escapeHtml(statusLabel(order.status)) + '</span></div>' +
                 '<div class="simple-item"><strong>Tổng tiền:</strong> ' + currency(order.total) + '</div>' +
                 '<div class="simple-item"><strong>Ghi chú:</strong> ' + escapeHtml(order.note || 'Không có') + '</div>' +
                 '<div class="simple-item"><strong>Sản phẩm:</strong><ul class="order-items">' + (itemsHtml || '<li>Không có item</li>') + '</ul></div>';
@@ -809,8 +826,8 @@
                     '<td>' + escapeHtml(user.id) + '</td>' +
                     '<td>' + escapeHtml(user.name) + '</td>' +
                     '<td>' + escapeHtml(user.email) + '</td>' +
-                    '<td>' + escapeHtml(user.role) + '</td>' +
-                    '<td><span class="badge ' + statusBadge(user.status) + '">' + escapeHtml(user.status) + '</span></td>' +
+                    '<td>' + escapeHtml(roleLabel(user.role)) + '</td>' +
+                    '<td><span class="badge ' + statusBadge(user.status) + '">' + escapeHtml(statusLabel(user.status)) + '</span></td>' +
                     '</tr>';
             }).join('');
         }
@@ -844,7 +861,7 @@
                 });
                 saveData(data);
                 addForm.reset();
-                if (notice) notice.textContent = 'Đã thêm user mô phỏng.';
+                if (notice) notice.textContent = 'Đã thêm người dùng mô phỏng.';
                 draw();
             });
         }
