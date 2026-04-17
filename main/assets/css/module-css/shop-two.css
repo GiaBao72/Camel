@@ -502,7 +502,6 @@
     width: 100%;
   }
 }
-
 /* ===== Index shop-two (pb_50) mobile-only grid + horizontal tabs ===== */
 @media only screen and (max-width: 767px){
   .shop-two.pb_50 .title-content{
@@ -514,9 +513,9 @@
   }
 
   .shop-two.pb_50 .tab-btns.tab-buttons.shop-tab-btn{
-    display: flex;
+    display: flex !important;
     align-items: center;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap !important;
     gap: 8px;
     overflow-x: auto;
     overflow-y: hidden;
@@ -526,85 +525,48 @@
     padding-bottom: 4px;
   }
 
-  .shop-two.pb_50 .tab-btns.tab-buttons.shop-tab-btn::-webkit-scrollbar{
-    height: 6px;
-  }
-
   .shop-two.pb_50 .tab-btns.tab-buttons.shop-tab-btn li{
-    float: none;
+    float: none !important;
     flex: 0 0 auto;
   }
 
-  .shop-two.pb_50 .tabs-content .tab .inner-container{
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .shop-two.pb_50 .tabs-content .tab .inner-container,
+  .shop-two.pb_50 .tabs-content .tab.active-tab .inner-container{
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 10px;
   }
 
-  .shop-two.pb_50 .inner-container .shop-block-two{
-    float: none;
-    width: auto;
-    padding: 0;
+  .shop-two.pb_50 .inner-container .shop-block-two,
+  .shop-two.pb_50 .tabs-content .tab.active-tab .inner-container .shop-block-two{
+    float: none !important;
+    width: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   .shop-two.pb_50 .inner-container .shop-block-two .inner-box{
-    padding: 12px 12px 16px 12px;
+    padding: 12px 10px 16px 10px !important;
   }
 
   .shop-two.pb_50 .inner-container .shop-block-two .inner-box .image-box .image{
-    max-width: 145px;
+    max-width: 120px;
   }
 
   .shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content h4{
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 19px;
+    margin-bottom: 8px;
   }
 
   .shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content h5{
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 15px;
+    line-height: 19px;
+  }
+
+  .shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content .rating,
+  .shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content .progress-box,
+  .shop-two.pb_50 .inner-container .shop-block-two .inner-box .lower-content .cart-btn{
+    display: none !important;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
