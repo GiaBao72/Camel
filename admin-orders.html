@@ -37,7 +37,20 @@
             </header>
 
             <section class="panel neu-card">
-                <h2>Cập nhật trạng thái đơn</h2>
+                <div class="panel-head">
+                    <h2>Cập nhật trạng thái đơn</h2>
+                    <button id="exportOrdersCsvBtn" class="admin-btn small" type="button">Export CSV</button>
+                </div>
+                <div class="filters two-col">
+                    <input id="ordersSearchInput" type="text" placeholder="Tìm theo mã đơn hoặc tên khách...">
+                    <select id="ordersStatusFilter">
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="pending">pending</option>
+                        <option value="shipping">shipping</option>
+                        <option value="done">done</option>
+                        <option value="cancelled">cancelled</option>
+                    </select>
+                </div>
                 <div class="table-wrap">
                     <table class="admin-table">
                         <thead>
@@ -53,9 +66,20 @@
                         <tbody id="ordersTableBody"></tbody>
                     </table>
                 </div>
+                <div id="ordersTableMeta" class="admin-footer-note"></div>
             </section>
         </main>
     </div>
+
+    <section id="orderDetailModal" class="modal-backdrop" aria-hidden="true">
+        <article class="modal-card neu-card" role="dialog" aria-modal="true" aria-labelledby="orderDetailTitle">
+            <div class="panel-head">
+                <h2 id="orderDetailTitle">Chi tiết đơn hàng</h2>
+                <button id="closeOrderModalBtn" class="admin-btn small danger" type="button">Đóng</button>
+            </div>
+            <div class="simple-list" id="orderDetailContent"></div>
+        </article>
+    </section>
 
     <script src="assets/js/admin-mock.js"></script>
 </body>
