@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camel Admin Products</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="assets/css/module-css/admin-neumorphism.css" rel="stylesheet">
+</head>
+<body class="admin-body" data-admin-protected="true">
+    <div class="admin-layout">
+        <aside class="admin-sidebar neu-card" aria-label="Sidebar quản trị">
+            <div>
+                <div class="admin-logo">Camel Admin</div>
+                <div class="admin-subtitle">Mock console · Neumorphism</div>
+            </div>
+            <nav class="admin-nav" aria-label="Điều hướng admin">
+                <a href="admin.html">Dashboard</a>
+                <a class="active" href="admin-products.html">Products</a>
+                <a href="admin-orders.html">Orders</a>
+                <a href="admin-users.html">Users</a>
+                <a href="admin-settings.html">Settings</a>
+                <a href="index.html">Về website</a>
+            </nav>
+            <button id="adminLogoutBtn" class="admin-btn danger" type="button">Đăng xuất</button>
+        </aside>
+
+        <main class="admin-shell">
+            <header class="admin-topbar neu-card">
+                <h1>Quản lý sản phẩm</h1>
+                <div class="admin-user">
+                    <span>Đăng nhập:</span>
+                    <strong id="adminSessionUser">Admin</strong>
+                </div>
+            </header>
+
+            <section class="panel neu-card">
+                <h2>Thêm sản phẩm mô phỏng</h2>
+                <form id="productAddForm" novalidate>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="productId">Mã sản phẩm</label>
+                            <input id="productId" required>
+                        </div>
+                        <div class="field">
+                            <label for="productName">Tên sản phẩm</label>
+                            <input id="productName" required>
+                        </div>
+                        <div class="field">
+                            <label for="productCategory">Danh mục</label>
+                            <input id="productCategory">
+                        </div>
+                        <div class="field">
+                            <label for="productPrice">Giá</label>
+                            <input id="productPrice" type="number" min="0">
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="productStock">Tồn kho</label>
+                            <input id="productStock" type="number" min="0">
+                        </div>
+                        <div class="field">
+                            <label for="productStatus">Trạng thái</label>
+                            <select id="productStatus">
+                                <option value="active">active</option>
+                                <option value="inactive">inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="admin-btn primary" type="submit">Thêm sản phẩm</button>
+                    <div id="productFormNotice" class="admin-footer-note" aria-live="polite"></div>
+                </form>
+            </section>
+
+            <section class="panel neu-card" style="margin-top:16px;">
+                <h2>Danh sách sản phẩm</h2>
+                <div class="filters">
+                    <input id="productSearchInput" type="text" placeholder="Tìm theo mã hoặc tên...">
+                    <select id="productStatusFilter">
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="active">active</option>
+                        <option value="inactive">inactive</option>
+                    </select>
+                </div>
+                <div class="table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Mã</th>
+                                <th>Tên</th>
+                                <th>Danh mục</th>
+                                <th>Giá</th>
+                                <th>Tồn kho</th>
+                                <th>Trạng thái</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/admin-mock.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camel Admin Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="assets/css/module-css/admin-neumorphism.css" rel="stylesheet">
+</head>
+<body class="admin-body" data-admin-protected="true">
+    <div class="admin-layout">
+        <aside class="admin-sidebar neu-card" aria-label="Sidebar quản trị">
+            <div>
+                <div class="admin-logo">Camel Admin</div>
+                <div class="admin-subtitle">Mock console · Neumorphism</div>
+            </div>
+            <nav class="admin-nav" aria-label="Điều hướng admin">
+                <a href="admin.html">Dashboard</a>
+                <a href="admin-products.html">Products</a>
+                <a href="admin-orders.html">Orders</a>
+                <a href="admin-users.html">Users</a>
+                <a class="active" href="admin-settings.html">Settings</a>
+                <a href="index.html">Về website</a>
+            </nav>
+            <button id="adminLogoutBtn" class="admin-btn danger" type="button">Đăng xuất</button>
+        </aside>
+
+        <main class="admin-shell">
+            <header class="admin-topbar neu-card">
+                <h1>Cấu hình mô phỏng</h1>
+                <div class="admin-user">
+                    <span>Đăng nhập:</span>
+                    <strong id="adminSessionUser">Admin</strong>
+                </div>
+            </header>
+
+            <section class="panel neu-card">
+                <h2>Thông tin chung hệ thống</h2>
+                <form id="settingsForm" class="form-column" novalidate>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="settingSiteName">Tên site</label>
+                            <input id="settingSiteName" required>
+                        </div>
+                        <div class="field">
+                            <label for="settingSupportEmail">Email hỗ trợ</label>
+                            <input id="settingSupportEmail" type="email" required>
+                        </div>
+                        <div class="field">
+                            <label for="settingShippingFee">Phí ship mặc định</label>
+                            <input id="settingShippingFee" type="number" min="0">
+                        </div>
+                        <div class="field">
+                            <label for="settingDiscount">Giảm giá mặc định (%)</label>
+                            <input id="settingDiscount" type="number" min="0" max="100">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="settingBanner">Tiêu đề banner trang chủ</label>
+                        <textarea id="settingBanner"></textarea>
+                    </div>
+                    <button class="admin-btn primary" type="submit">Lưu cấu hình</button>
+                    <div id="settingsNotice" class="admin-footer-note" aria-live="polite"></div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/admin-mock.js"></script>
+</body>
+</html>

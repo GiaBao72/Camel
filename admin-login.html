@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camel Admin Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="assets/css/module-css/admin-neumorphism.css" rel="stylesheet">
+</head>
+<body class="admin-body" data-admin-protected="false">
+    <main class="login-shell">
+        <section class="login-card neu-card" aria-labelledby="loginTitle">
+            <h1 id="loginTitle">Camel Admin</h1>
+            <p>Đăng nhập vào trang quản trị mô phỏng thương mại điện tử.</p>
+
+            <form id="adminLoginForm" class="form-column" novalidate>
+                <div class="field">
+                    <label for="loginEmail">Email</label>
+                    <input id="loginEmail" name="email" type="email" autocomplete="email" required>
+                </div>
+                <div class="field">
+                    <label for="loginPassword">Mật khẩu</label>
+                    <input id="loginPassword" name="password" type="password" autocomplete="current-password" required>
+                </div>
+                <button class="admin-btn primary" type="submit">Đăng nhập</button>
+            </form>
+
+            <div id="loginMessage" class="admin-footer-note" aria-live="polite"></div>
+            <div class="login-tip neu-inset">
+                Tài khoản demo: admin@camel.local<br>
+                Mật khẩu demo: 123456
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/admin-mock.js"></script>
+</body>
+</html>

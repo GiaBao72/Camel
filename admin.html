@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camel Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="assets/css/module-css/admin-neumorphism.css" rel="stylesheet">
+</head>
+<body class="admin-body" data-admin-protected="true">
+    <div class="admin-layout">
+        <aside class="admin-sidebar neu-card" aria-label="Sidebar quản trị">
+            <div>
+                <div class="admin-logo">Camel Admin</div>
+                <div class="admin-subtitle">Mock console · Neumorphism</div>
+            </div>
+            <nav class="admin-nav" aria-label="Điều hướng admin">
+                <a class="active" href="admin.html">Dashboard</a>
+                <a href="admin-products.html">Products</a>
+                <a href="admin-orders.html">Orders</a>
+                <a href="admin-users.html">Users</a>
+                <a href="admin-settings.html">Settings</a>
+                <a href="index.html">Về website</a>
+            </nav>
+            <button id="adminLogoutBtn" class="admin-btn danger" type="button">Đăng xuất</button>
+        </aside>
+
+        <main class="admin-shell">
+            <header class="admin-topbar neu-card">
+                <h1>Tổng quan vận hành</h1>
+                <div class="admin-user">
+                    <span>Đăng nhập:</span>
+                    <strong id="adminSessionUser">Admin</strong>
+                </div>
+            </header>
+
+            <section class="grid-stats" aria-label="Thống kê nhanh">
+                <article class="stat-card neu-card">
+                    <div class="stat-label">Sản phẩm</div>
+                    <div class="stat-value" id="statProducts">0</div>
+                    <div class="stat-note">Mô phỏng realtime</div>
+                </article>
+                <article class="stat-card neu-card">
+                    <div class="stat-label">Đơn hàng</div>
+                    <div class="stat-value" id="statOrders">0</div>
+                    <div class="stat-note">Trong localStorage</div>
+                </article>
+                <article class="stat-card neu-card">
+                    <div class="stat-label">Doanh thu đã chốt</div>
+                    <div class="stat-value" id="statRevenue">0</div>
+                    <div class="stat-note">Chỉ đơn done</div>
+                </article>
+                <article class="stat-card neu-card">
+                    <div class="stat-label">Người dùng hệ thống</div>
+                    <div class="stat-value" id="statUsers">0</div>
+                    <div class="stat-note">Team nội bộ</div>
+                </article>
+            </section>
+
+            <section class="admin-grid-2">
+                <article class="panel neu-card">
+                    <h2>Đơn hàng gần nhất</h2>
+                    <div class="table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Mã</th>
+                                    <th>Khách hàng</th>
+                                    <th>Giá trị</th>
+                                    <th>Trạng thái</th>
+                                    <th>Ngày</th>
+                                </tr>
+                            </thead>
+                            <tbody id="latestOrders"></tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="panel neu-card">
+                    <h2>Cảnh báo tồn kho</h2>
+                    <div id="stockAlerts" class="kpi-list" aria-live="polite"></div>
+                    <div class="admin-footer-note">
+                        Gợi ý: chuyển sang tab Products để thêm hàng hoặc đổi trạng thái hiển thị.
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/admin-mock.js"></script>
+</body>
+</html>

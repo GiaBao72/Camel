@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camel Admin Users</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="assets/css/module-css/admin-neumorphism.css" rel="stylesheet">
+</head>
+<body class="admin-body" data-admin-protected="true">
+    <div class="admin-layout">
+        <aside class="admin-sidebar neu-card" aria-label="Sidebar quản trị">
+            <div>
+                <div class="admin-logo">Camel Admin</div>
+                <div class="admin-subtitle">Mock console · Neumorphism</div>
+            </div>
+            <nav class="admin-nav" aria-label="Điều hướng admin">
+                <a href="admin.html">Dashboard</a>
+                <a href="admin-products.html">Products</a>
+                <a href="admin-orders.html">Orders</a>
+                <a class="active" href="admin-users.html">Users</a>
+                <a href="admin-settings.html">Settings</a>
+                <a href="index.html">Về website</a>
+            </nav>
+            <button id="adminLogoutBtn" class="admin-btn danger" type="button">Đăng xuất</button>
+        </aside>
+
+        <main class="admin-shell">
+            <header class="admin-topbar neu-card">
+                <h1>Quản lý người dùng nội bộ</h1>
+                <div class="admin-user">
+                    <span>Đăng nhập:</span>
+                    <strong id="adminSessionUser">Admin</strong>
+                </div>
+            </header>
+
+            <section class="panel neu-card">
+                <h2>Thêm tài khoản nội bộ</h2>
+                <form id="userAddForm" novalidate>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="userId">Mã user</label>
+                            <input id="userId" required>
+                        </div>
+                        <div class="field">
+                            <label for="userName">Họ tên</label>
+                            <input id="userName" required>
+                        </div>
+                        <div class="field">
+                            <label for="userEmail">Email</label>
+                            <input id="userEmail" type="email" required>
+                        </div>
+                        <div class="field">
+                            <label for="userRole">Vai trò</label>
+                            <select id="userRole">
+                                <option value="owner">owner</option>
+                                <option value="manager">manager</option>
+                                <option value="staff">staff</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="userStatus">Trạng thái</label>
+                            <select id="userStatus">
+                                <option value="active">active</option>
+                                <option value="inactive">inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="admin-btn primary" type="submit">Thêm user</button>
+                    <div id="userFormNotice" class="admin-footer-note" aria-live="polite"></div>
+                </form>
+            </section>
+
+            <section class="panel neu-card" style="margin-top:16px;">
+                <h2>Danh sách user</h2>
+                <div class="table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Mã</th>
+                                <th>Tên</th>
+                                <th>Email</th>
+                                <th>Vai trò</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/admin-mock.js"></script>
+</body>
+</html>
