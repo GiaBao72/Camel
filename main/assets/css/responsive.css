@@ -248,18 +248,17 @@
   }
 
   .main-header .outer-box .category-box{
-    width: auto;
-    min-width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
+    display: none !important;
   }
 
-  .main-header .outer-box .category-box .text i{
-    margin: 0;
+  .main-header .menu-area{
+    order: 0;
+    margin-right: auto;
+  }
+
+  .menu-area .mobile-nav-toggler{
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .main-header .menu-right-content .currency-box{
