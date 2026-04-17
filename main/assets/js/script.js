@@ -40,33 +40,40 @@
 		
 	}
 
-	//Mobile Nav Hide Show
-	if($('.mobile-menu').length){
-		
-		
-		var mobileMenuContent = $('.main-header .menu-area .main-menu').html();
-		$('.mobile-menu .menu-box .menu-outer').append(mobileMenuContent);
-		$('.sticky-header .main-menu').append(mobileMenuContent);
-		
-		//Dropdown Button
-		$('.mobile-menu li.dropdown .dropdown-btn').on('click', function() {
-			$(this).toggleClass('open');
-			$(this).prev('ul').slideToggle(500);
-		});
-		//Dropdown Button
-		$('.mobile-menu li.dropdown .dropdown-btn').on('click', function() {
-			$(this).prev('.megamenu').slideToggle(900);
-		});
-		//Menu Toggle Btn
-		$('.mobile-nav-toggler').on('click', function() {
-			$('body').addClass('mobile-menu-visible');
-		});
+	//Mobile Nav Hide Show (support dynamic header components)
+	function syncMobileMenuContent(){
+		if(!$('.mobile-menu').length) return;
+		var $target = $('.mobile-menu .menu-box .menu-outer');
+		if($target.children().length) return;
 
-		//Menu Toggle Btn
-		$('.mobile-menu .menu-backdrop,.mobile-menu .close-btn').on('click', function() {
-			$('body').removeClass('mobile-menu-visible');
-		});
+		var mobileMenuContent = $('.main-header .menu-area .main-menu').first().html();
+		if(mobileMenuContent && mobileMenuContent.trim().length){
+			$target.html(mobileMenuContent);
+			$('.sticky-header .main-menu').html(mobileMenuContent);
+		}
 	}
+
+	syncMobileMenuContent();
+	setTimeout(syncMobileMenuContent, 300);
+	setTimeout(syncMobileMenuContent, 900);
+
+	$(document).on('click', '.mobile-menu li.dropdown .dropdown-btn', function() {
+		$(this).toggleClass('open');
+		$(this).prev('ul').slideToggle(500);
+	});
+
+	$(document).on('click', '.mobile-menu li.dropdown .dropdown-btn', function() {
+		$(this).prev('.megamenu').slideToggle(900);
+	});
+
+	$(document).on('click', '.mobile-nav-toggler', function() {
+		syncMobileMenuContent();
+		$('body').addClass('mobile-menu-visible');
+	});
+
+	$(document).on('click', '.mobile-menu .menu-backdrop, .mobile-menu .close-btn', function() {
+		$('body').removeClass('mobile-menu-visible');
+	});
 
 
 	//Category Dropdown Toggle
