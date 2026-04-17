@@ -35,3 +35,38 @@
 - Verify kỹ thuật:
   - node --check main/assets/js/admin-mock.js: pass
   - node --check main/assets/js/script.js: pass
+
+## 2026-04-18 - P2 Admin Mock Upgrade (No storefront impact)
+
+### Bắt đầu
+- Scope: Nâng cấp bộ admin mock theo hướng giống vận hành thật hơn, vẫn dùng localStorage.
+- Ràng buộc bắt buộc:
+  - Không chỉnh main/index.html.
+  - Không chỉnh main/assets/js/script.js (storefront).
+  - Chỉ chỉnh các file admin riêng và asset admin.
+- Checklist triển khai:
+  1. Products: edit inline, hỗ trợ ảnh (URL), sort và phân trang.
+  2. Orders: lọc theo trạng thái, xem detail đơn, export CSV.
+  3. Dashboard: thêm chart mô phỏng doanh thu 7 ngày bằng canvas.
+  4. Cập nhật UI/UX và state theo style Neumorphism.
+  5. Verify syntax + git status + commit/push nhánh Giang.
+
+### Kết quả P2
+- Đã nâng cấp Products:
+  - Thêm field ảnh sản phẩm (URL).
+  - Thêm sort (giá/tồn kho) và phân trang bảng.
+  - Thêm luồng edit sản phẩm riêng (chọn edit từ bảng -> cập nhật form -> lưu).
+- Đã nâng cấp Orders:
+  - Lọc theo trạng thái + tìm theo mã/tên khách.
+  - Modal xem chi tiết đơn (items + ghi chú).
+  - Export CSV theo bộ lọc hiện tại.
+- Đã nâng cấp Dashboard:
+  - Thêm biểu đồ doanh thu 7 ngày bằng canvas.
+  - Có nút regen dữ liệu mô phỏng.
+- Đảm bảo ràng buộc không ảnh hưởng storefront:
+  - Không chỉnh main/index.html.
+  - Không chỉnh main/assets/js/script.js.
+  - Chỉ chỉnh file admin và asset admin.
+- Verify kỹ thuật:
+  - node --check main/assets/js/admin-mock.js: pass
+  - node --check main/assets/js/script.js: pass
