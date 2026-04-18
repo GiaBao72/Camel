@@ -132,15 +132,21 @@
         ];
 
         productSeeds.forEach(function (item) {
-            if (!data.products.some(function (p) { return p.id === item.id; })) data.products.push(item);
+            var idx = data.products.findIndex(function (p) { return p.id === item.id; });
+            if (idx === -1) data.products.push(item);
+            else data.products[idx] = Object.assign({}, data.products[idx], item);
         });
 
         orderSeeds.forEach(function (item) {
-            if (!data.orders.some(function (o) { return o.id === item.id; })) data.orders.push(item);
+            var idx = data.orders.findIndex(function (o) { return o.id === item.id; });
+            if (idx === -1) data.orders.push(item);
+            else data.orders[idx] = Object.assign({}, data.orders[idx], item);
         });
 
         userSeeds.forEach(function (item) {
-            if (!data.users.some(function (u) { return u.id === item.id; })) data.users.push(item);
+            var idx = data.users.findIndex(function (u) { return u.id === item.id; });
+            if (idx === -1) data.users.push(item);
+            else data.users[idx] = Object.assign({}, data.users[idx], item);
         });
 
         return data;
