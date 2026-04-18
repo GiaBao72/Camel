@@ -89,8 +89,15 @@
 
             <section class="panel neu-card" style="margin-top:16px;">
                 <div class="panel-head">
-                    <h2>Doanh thu 7 ngày (mô phỏng)</h2>
-                    <button class="admin-btn small" id="regenRevenueBtn" type="button">Tạo lại dữ liệu</button>
+                    <h2>Doanh thu mô phỏng</h2>
+                    <div class="table-actions">
+                        <select id="revenueRangeFilter" class="admin-select small">
+                            <option value="7">7 ngày</option>
+                            <option value="14">14 ngày</option>
+                            <option value="30">30 ngày</option>
+                        </select>
+                        <button class="admin-btn small" id="regenRevenueBtn" type="button">Tạo lại dữ liệu</button>
+                    </div>
                 </div>
                 <div class="chart-wrap">
                     <canvas id="revenueChart" width="900" height="240" aria-label="Biểu đồ doanh thu 7 ngày"></canvas>

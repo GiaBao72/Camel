@@ -146,6 +146,16 @@ textarea:focus-visible {
     font-size: 12px;
 }
 
+.admin-select.small {
+    border: none;
+    border-radius: 10px;
+    padding: 7px 10px;
+    min-height: 34px;
+    background: var(--admin-surface-soft);
+    box-shadow: var(--admin-shadow-inset);
+    font-size: 12px;
+    color: var(--admin-text);
+}
 .admin-btn:active {
     box-shadow: var(--admin-shadow-inset);
 }
@@ -241,6 +251,13 @@ textarea:focus-visible {
 .admin-table tbody tr {
     background: var(--admin-surface-soft);
     box-shadow: var(--admin-shadow-inset);
+}
+
+.admin-table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--admin-surface);
+    z-index: 1;
 }
 
 .table-actions {
@@ -397,6 +414,31 @@ textarea {
     color: var(--admin-text-soft);
     font-size: 12px;
 }
+
+.toast-stack {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    z-index: 99;
+    display: grid;
+    gap: 8px;
+}
+
+.admin-toast {
+    min-width: 220px;
+    max-width: 320px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: var(--admin-surface);
+    box-shadow: var(--admin-shadow-raised);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.admin-toast.success { color: var(--admin-success); }
+.admin-toast.warning { color: var(--admin-warning); }
+.admin-toast.danger { color: var(--admin-danger); }
+.admin-toast.info { color: var(--admin-info); }
 
 .chart-wrap {
     padding: 10px;

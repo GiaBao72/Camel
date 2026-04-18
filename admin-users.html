@@ -77,6 +77,14 @@
 
             <section class="panel neu-card" style="margin-top:16px;">
                 <h2>Danh sách người dùng</h2>
+                <div class="filters two-col">
+                    <input id="usersSearchInput" type="text" placeholder="Tìm theo tên hoặc email...">
+                    <select id="usersStatusFilter">
+                        <option value="all">Tất cả trạng thái</option>
+                        <option value="active">Đang hoạt động</option>
+                        <option value="inactive">Ngưng hoạt động</option>
+                    </select>
+                </div>
                 <div class="table-wrap">
                     <table class="admin-table">
                         <thead>

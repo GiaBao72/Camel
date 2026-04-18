@@ -51,10 +51,15 @@
                         <option value="cancelled">Đã hủy</option>
                     </select>
                 </div>
+                <div class="table-actions" style="margin-bottom:10px;">
+                    <button class="admin-btn small warning" id="ordersMarkShippingBtn" type="button">Đánh dấu đang giao</button>
+                    <button class="admin-btn small success" id="ordersMarkDoneBtn" type="button">Đánh dấu hoàn tất</button>
+                </div>
                 <div class="table-wrap">
                     <table class="admin-table">
                         <thead>
                             <tr>
+                                <th><input type="checkbox" id="ordersCheckAll" aria-label="Chọn tất cả đơn hàng"></th>
                                 <th>Mã đơn</th>
                                 <th>Khách hàng</th>
                                 <th>Giá trị</th>
