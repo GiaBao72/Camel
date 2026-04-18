@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 Camel 管理后台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/module-css/admin-neumorphism.css" rel="stylesheet">
+</head>
+<body class="admin-body" data-admin-protected="false">
+    <main class="login-shell">
+        <section class="login-card neu-card" aria-labelledby="loginTitle">
+            <h1 id="loginTitle">Camel 管理后台</h1>
+            <p>登录电商模拟管理后台。</p>
+
+            <form id="adminLoginForm" class="form-column" novalidate>
+                <div class="field">
+                    <label for="loginEmail">Email</label>
+                    <input id="loginEmail" name="email" type="email" autocomplete="email" required>
+                </div>
+                <div class="field">
+                    <label for="loginPassword">密码</label>
+                    <input id="loginPassword" name="password" type="password" autocomplete="current-password" required>
+                </div>
+                <button class="admin-btn primary" type="submit">登录</button>
+            </form>
+
+            <div id="loginMessage" class="admin-footer-note" aria-live="polite"></div>
+            <div class="login-tip neu-inset">
+                演示账号：admin@camel.local<br>
+                演示密码：123456
+            </div>
+        </section>
+    </main>
+
+    <script src="assets/js/admin-mock-cn.js"></script>
+</body>
+</html>

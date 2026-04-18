@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camel 后台设置</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/module-css/admin-neumorphism.css" rel="stylesheet">
+</head>
+<body class="admin-body" data-admin-protected="true">
+    <div class="admin-layout">
+        <aside class="admin-sidebar neu-card" aria-label="管理侧边栏">
+            <div>
+                <div class="admin-logo">Camel 管理后台</div>
+                <div class="admin-subtitle">模拟管理面板 · 软 UI 风格</div>
+            </div>
+            <nav class="admin-nav" aria-label="后台导航">
+                <a href="admin-cn.html">总览</a>
+                <a href="admin-products-cn.html">商品</a>
+                <a href="admin-orders-cn.html">订单</a>
+                <a href="admin-users-cn.html">用户</a>
+                <a class="active" href="admin-settings-cn.html">设置</a>
+                <a href="index-cn.html">返回网站</a>
+            </nav>
+            <button id="adminLogoutBtn" class="admin-btn danger" type="button">退出登录</button>
+        </aside>
+
+        <main class="admin-shell">
+            <header class="admin-topbar neu-card">
+                <h1>模拟配置</h1>
+                <div class="admin-user">
+                    <span>当前登录：</span>
+                    <strong id="adminSessionUser">Admin</strong>
+                </div>
+            </header>
+
+            <section class="panel neu-card">
+                <h2>系统基础配置</h2>
+                <form id="settingsForm" class="form-column" novalidate>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="settingSiteName">站点名称</label>
+                            <input id="settingSiteName" required>
+                        </div>
+                        <div class="field">
+                            <label for="settingSupportEmail">支持邮箱</label>
+                            <input id="settingSupportEmail" type="email" required>
+                        </div>
+                        <div class="field">
+                            <label for="settingShippingFee">默认运费</label>
+                            <input id="settingShippingFee" type="number" min="0">
+                        </div>
+                        <div class="field">
+                            <label for="settingDiscount">默认折扣（%）</label>
+                            <input id="settingDiscount" type="number" min="0" max="100">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="settingBanner">首页横幅标题</label>
+                        <textarea id="settingBanner"></textarea>
+                    </div>
+                    <button class="admin-btn primary" type="submit">保存配置</button>
+                    <div id="settingsNotice" class="admin-footer-note" aria-live="polite"></div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/admin-mock-cn.js"></script>
+</body>
+</html>
+
