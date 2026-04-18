@@ -264,6 +264,23 @@
         return role || '';
     }
 
+    function toast(message, type) {
+        var stack = document.querySelector('.toast-stack');
+        if (!stack) {
+            stack = document.createElement('div');
+            stack.className = 'toast-stack';
+            document.body.appendChild(stack);
+        }
+        var el = document.createElement('div');
+        el.className = 'admin-toast ' + (type || 'info');
+        el.textContent = message;
+        stack.appendChild(el);
+        setTimeout(function () {
+            el.remove();
+            if (!stack.children.length) stack.remove();
+        }, 2400);
+    }
+
     function escapeHtml(text) {
         if (text == null) return '';
         return String(text)
@@ -420,12 +437,25 @@
         drawRevenueChart(data.revenueSeries);
 
         var regenBtn = document.getElementById('regenRevenueBtn');
+        var revenueRangeFilter = document.getElementById('revenueRangeFilter');
         if (regenBtn && !regenBtn.dataset.bound) {
             regenBtn.dataset.bound = '1';
             regenBtn.addEventListener('click', function () {
                 data.revenueSeries = createRevenueSeries();
                 saveData(data);
                 drawRevenueChart(data.revenueSeries);
+                toast('Đã tạo lại dữ liệu doanh thu mô phỏng.', 'success');
+            });
+        }
+
+        if (revenueRangeFilter && !revenueRangeFilter.dataset.bound) {
+            revenueRangeFilter.dataset.bound = '1';
+            revenueRangeFilter.addEventListener('change', function () {
+                // mock: vẫn dữ liệu 7 ngày, chỉ cập nhật text mô phỏng
+                var summary = document.getElementById('revenueSummary');
+                if (summary) {
+                    summary.textContent += ' · Bộ lọc: ' + revenueRangeFilter.value + ' ngày (mô phỏng).';
+                }
             });
         }
     }
@@ -714,6 +744,7 @@
 
             tableBody.innerHTML = list.map(function (order) {
                 return '<tr>' +
+                    '<td><input type="checkbox" class="order-row-check" data-id="' + escapeHtml(order.id) + '"></td>' +
                     '<td>' + escapeHtml(order.id) + '</td>' +
                     '<td>' + escapeHtml(order.customer) + '</td>' +
                     '<td>' + currency(order.total) + '</td>' +
@@ -809,8 +840,41 @@
                 link.click();
                 document.body.removeChild(link);
                 URL.revokeObjectURL(url);
+                toast('Đã xuất CSV đơn hàng.', 'success');
             });
         }
+
+        var checkAll = document.getElementById('ordersCheckAll');
+        if (checkAll) {
+            checkAll.addEventListener('change', function () {
+                var checks = tableBody.querySelectorAll('.order-row-check');
+                checks.forEach(function (c) { c.checked = checkAll.checked; });
+            });
+        }
+
+        function getCheckedOrderIds() {
+            return Array.from(tableBody.querySelectorAll('.order-row-check:checked')).map(function (c) { return c.dataset.id; });
+        }
+
+        function bulkUpdateStatus(nextStatus) {
+            var ids = getCheckedOrderIds();
+            if (!ids.length) {
+                toast('Hãy chọn ít nhất 1 đơn hàng.', 'warning');
+                return;
+            }
+            data.orders = data.orders.map(function (order) {
+                if (ids.indexOf(order.id) === -1) return order;
+                return Object.assign({}, order, { status: nextStatus });
+            });
+            saveData(data);
+            draw();
+            toast('Đã cập nhật ' + ids.length + ' đơn hàng.', 'success');
+        }
+
+        var btnShipping = document.getElementById('ordersMarkShippingBtn');
+        var btnDone = document.getElementById('ordersMarkDoneBtn');
+        if (btnShipping) btnShipping.addEventListener('click', function () { bulkUpdateStatus('shipping'); });
+        if (btnDone) btnDone.addEventListener('click', function () { bulkUpdateStatus('done'); });
 
         draw();
     }
@@ -818,10 +882,23 @@
     function renderUsersPage(data) {
         var tableBody = document.getElementById('usersTableBody');
         var addForm = document.getElementById('userAddForm');
+        var searchInput = document.getElementById('usersSearchInput');
+        var statusFilter = document.getElementById('usersStatusFilter');
         if (!tableBody) return;
 
+        function getFilteredUsers() {
+            var keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+            var status = statusFilter ? statusFilter.value : 'all';
+            return data.users.filter(function (user) {
+                var textMatch = !keyword || user.name.toLowerCase().indexOf(keyword) >= 0 || user.email.toLowerCase().indexOf(keyword) >= 0;
+                var statusMatch = status === 'all' || user.status === status;
+                return textMatch && statusMatch;
+            });
+        }
+
         function draw() {
-            tableBody.innerHTML = data.users.map(function (user) {
+            var list = getFilteredUsers();
+            tableBody.innerHTML = list.map(function (user) {
                 return '<tr>' +
                     '<td>' + escapeHtml(user.id) + '</td>' +
                     '<td>' + escapeHtml(user.name) + '</td>' +
@@ -829,7 +906,7 @@
                     '<td>' + escapeHtml(roleLabel(user.role)) + '</td>' +
                     '<td><span class="badge ' + statusBadge(user.status) + '">' + escapeHtml(statusLabel(user.status)) + '</span></td>' +
                     '</tr>';
-            }).join('');
+            }).join('') || '<tr><td colspan="5">Không có người dùng phù hợp.</td></tr>';
         }
 
         if (addForm) {
@@ -844,11 +921,13 @@
 
                 if (!id || !name || !email) {
                     if (notice) notice.textContent = 'Điền đủ mã, tên và email.';
+                    toast('Thiếu thông tin người dùng.', 'warning');
                     return;
                 }
 
                 if (data.users.some(function (u) { return u.id === id; })) {
                     if (notice) notice.textContent = 'Mã user đã tồn tại.';
+                    toast('Mã user đã tồn tại.', 'danger');
                     return;
                 }
 
@@ -862,9 +941,13 @@
                 saveData(data);
                 addForm.reset();
                 if (notice) notice.textContent = 'Đã thêm người dùng mô phỏng.';
+                toast('Đã thêm người dùng.', 'success');
                 draw();
             });
         }
+
+        if (searchInput) searchInput.addEventListener('input', draw);
+        if (statusFilter) statusFilter.addEventListener('change', draw);
 
         draw();
     }
