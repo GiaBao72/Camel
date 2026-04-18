@@ -110,6 +110,42 @@
         };
     }
 
+    function enrichDemoData(data) {
+        var productSeeds = [
+            { id: 'P-1004', name: 'Đèn ngủ cảm ứng Luna / 露娜感应夜灯', category: 'Đèn decor / 装饰灯', price: 289000, stock: 38, status: 'active', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=320&auto=format&fit=crop' },
+            { id: 'P-1005', name: 'Pin sạc dự phòng 20.000mAh / 2万毫安充电宝', category: 'Phụ kiện điện thoại / 手机配件', price: 399000, stock: 67, status: 'active', image: 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=320&auto=format&fit=crop' },
+            { id: 'P-1006', name: 'Tai nghe Bluetooth AirBeat / AirBeat 蓝牙耳机', category: 'Âm thanh / 音频设备', price: 629000, stock: 24, status: 'active', image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=320&auto=format&fit=crop' },
+            { id: 'P-1007', name: 'Máy xay mini cầm tay / 迷你手持搅拌机', category: 'Gia dụng nhỏ / 小家电', price: 349000, stock: 15, status: 'active', image: 'https://images.unsplash.com/photo-1571687949920-8b7f2d9d8f2d?w=320&auto=format&fit=crop' },
+            { id: 'P-1008', name: 'Bàn chải điện Sonic+ / Sonic+ 电动牙刷', category: 'Chăm sóc cá nhân / 个人护理', price: 529000, stock: 12, status: 'active', image: 'https://images.unsplash.com/photo-1559591935-abc6d8f9d0f3?w=320&auto=format&fit=crop' }
+        ];
+
+        var orderSeeds = [
+            { id: 'OD-9004', customer: 'Phạm Thu / 范秋', total: 798000, status: 'pending', date: '2026-04-15', note: 'Giao giờ hành chính / 工作时间配送。', items: [{ name: 'Đèn ngủ cảm ứng Luna / 露娜感应夜灯', qty: 2, price: 289000 }, { name: 'Pin sạc dự phòng 20.000mAh / 2万毫安充电宝', qty: 1, price: 399000 }] },
+            { id: 'OD-9005', customer: 'Võ Long / 武龙', total: 629000, status: 'shipping', date: '2026-04-14', note: 'Khách yêu cầu gọi trước khi giao / 送货前请先电话联系。', items: [{ name: 'Tai nghe Bluetooth AirBeat / AirBeat 蓝牙耳机', qty: 1, price: 629000 }] },
+            { id: 'OD-9006', customer: 'Hà An / 何安', total: 1048000, status: 'done', date: '2026-04-13', note: 'Đã nhận đủ hàng / 已完整收货。', items: [{ name: 'Máy xay mini cầm tay / 迷你手持搅拌机', qty: 1, price: 349000 }, { name: 'Bàn chải điện Sonic+ / Sonic+ 电动牙刷', qty: 1, price: 529000 }, { name: 'Combo phụ kiện điện thoại 5in1 / 5合1手机配件套装', qty: 1, price: 170000 }] }
+        ];
+
+        var userSeeds = [
+            { id: 'U-104', name: 'Linh Sales / 销售灵', email: 'linh.sales@camel.local', role: 'staff', status: 'active' },
+            { id: 'U-105', name: 'An CSKH / 客服安', email: 'an.cskh@camel.local', role: 'staff', status: 'active' },
+            { id: 'U-106', name: 'Khoa Kho Vận / 仓储科', email: 'khoavt@camel.local', role: 'manager', status: 'active' }
+        ];
+
+        productSeeds.forEach(function (item) {
+            if (!data.products.some(function (p) { return p.id === item.id; })) data.products.push(item);
+        });
+
+        orderSeeds.forEach(function (item) {
+            if (!data.orders.some(function (o) { return o.id === item.id; })) data.orders.push(item);
+        });
+
+        userSeeds.forEach(function (item) {
+            if (!data.users.some(function (u) { return u.id === item.id; })) data.users.push(item);
+        });
+
+        return data;
+    }
+
     function createRevenueSeries() {
         var labels = [];
         var values = [];
@@ -981,7 +1017,8 @@
         logoutHandler();
         bindSessionUser();
 
-        var data = loadData();
+        var data = enrichDemoData(loadData());
+        saveData(data);
         renderDashboard(data);
         renderProductsPage(data);
         renderOrdersPage(data);

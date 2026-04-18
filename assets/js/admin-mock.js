@@ -110,6 +110,42 @@
         };
     }
 
+    function enrichDemoData(data) {
+        var productSeeds = [
+            { id: 'P-1004', name: 'Đèn ngủ cảm ứng Luna', category: 'Đèn decor', price: 289000, stock: 38, status: 'active', image: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=320&auto=format&fit=crop' },
+            { id: 'P-1005', name: 'Pin sạc dự phòng 20.000mAh', category: 'Phụ kiện điện thoại', price: 399000, stock: 67, status: 'active', image: 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=320&auto=format&fit=crop' },
+            { id: 'P-1006', name: 'Tai nghe Bluetooth AirBeat', category: 'Âm thanh', price: 629000, stock: 24, status: 'active', image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?w=320&auto=format&fit=crop' },
+            { id: 'P-1007', name: 'Máy xay mini cầm tay', category: 'Gia dụng nhỏ', price: 349000, stock: 15, status: 'active', image: 'https://images.unsplash.com/photo-1571687949920-8b7f2d9d8f2d?w=320&auto=format&fit=crop' },
+            { id: 'P-1008', name: 'Bàn chải điện Sonic+', category: 'Chăm sóc cá nhân', price: 529000, stock: 12, status: 'active', image: 'https://images.unsplash.com/photo-1559591935-abc6d8f9d0f3?w=320&auto=format&fit=crop' }
+        ];
+
+        var orderSeeds = [
+            { id: 'OD-9004', customer: 'Phạm Thu', total: 798000, status: 'pending', date: '2026-04-15', note: 'Giao giờ hành chính.', items: [{ name: 'Đèn ngủ cảm ứng Luna', qty: 2, price: 289000 }, { name: 'Pin sạc dự phòng 20.000mAh', qty: 1, price: 399000 }] },
+            { id: 'OD-9005', customer: 'Võ Long', total: 629000, status: 'shipping', date: '2026-04-14', note: 'Khách yêu cầu gọi trước khi giao.', items: [{ name: 'Tai nghe Bluetooth AirBeat', qty: 1, price: 629000 }] },
+            { id: 'OD-9006', customer: 'Hà An', total: 1048000, status: 'done', date: '2026-04-13', note: 'Đã nhận đủ hàng.', items: [{ name: 'Máy xay mini cầm tay', qty: 1, price: 349000 }, { name: 'Bàn chải điện Sonic+', qty: 1, price: 529000 }, { name: 'Combo phụ kiện điện thoại 5in1', qty: 1, price: 170000 }] }
+        ];
+
+        var userSeeds = [
+            { id: 'U-104', name: 'Linh Sales', email: 'linh.sales@camel.local', role: 'staff', status: 'active' },
+            { id: 'U-105', name: 'An CSKH', email: 'an.cskh@camel.local', role: 'staff', status: 'active' },
+            { id: 'U-106', name: 'Khoa Kho Vận', email: 'khoavt@camel.local', role: 'manager', status: 'active' }
+        ];
+
+        productSeeds.forEach(function (item) {
+            if (!data.products.some(function (p) { return p.id === item.id; })) data.products.push(item);
+        });
+
+        orderSeeds.forEach(function (item) {
+            if (!data.orders.some(function (o) { return o.id === item.id; })) data.orders.push(item);
+        });
+
+        userSeeds.forEach(function (item) {
+            if (!data.users.some(function (u) { return u.id === item.id; })) data.users.push(item);
+        });
+
+        return data;
+    }
+
     function createRevenueSeries() {
         var labels = [];
         var values = [];
@@ -981,7 +1017,8 @@
         logoutHandler();
         bindSessionUser();
 
-        var data = loadData();
+        var data = enrichDemoData(loadData());
+        saveData(data);
         renderDashboard(data);
         renderProductsPage(data);
         renderOrdersPage(data);
