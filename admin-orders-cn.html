@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camel 订单管理</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/module-css/admin-neumorphism.css" rel="stylesheet">
+</head>
+<body class="admin-body" data-admin-protected="true">
+    <div class="admin-layout">
+        <aside class="admin-sidebar neu-card" aria-label="管理侧边栏">
+            <div>
+                <div class="admin-logo">Camel 管理后台</div>
+                <div class="admin-subtitle">模拟管理面板 · 软 UI 风格</div>
+            </div>
+            <nav class="admin-nav" aria-label="后台导航">
+                <a href="admin-cn.html">总览</a>
+                <a href="admin-products-cn.html">商品</a>
+                <a class="active" href="admin-orders-cn.html">订单</a>
+                <a href="admin-users-cn.html">用户</a>
+                <a href="admin-settings-cn.html">设置</a>
+                <a href="index-cn.html">返回网站</a>
+            </nav>
+            <button id="adminLogoutBtn" class="admin-btn danger" type="button">退出登录</button>
+        </aside>
+
+        <main class="admin-shell">
+            <header class="admin-topbar neu-card">
+                <h1>订单管理</h1>
+                <div class="admin-user">
+                    <span>当前登录：</span>
+                    <strong id="adminSessionUser">Admin</strong>
+                </div>
+            </header>
+
+            <section class="panel neu-card">
+                <div class="panel-head">
+                    <h2>更新订单状态</h2>
+                    <button id="exportOrdersCsvBtn" class="admin-btn small" type="button">导出 CSV</button>
+                </div>
+                <div class="filters two-col">
+                    <input id="ordersSearchInput" type="text" placeholder="按订单号或客户搜索...">
+                    <select id="ordersStatusFilter">
+                        <option value="all">全部状态</option>
+                        <option value="pending">待确认</option>
+                        <option value="shipping">配送中</option>
+                        <option value="done">已完成</option>
+                        <option value="cancelled">已取消</option>
+                    </select>
+                </div>
+                <div class="table-actions" style="margin-bottom:10px;">
+                    <button class="admin-btn small warning" id="ordersMarkShippingBtn" type="button">标记配送中</button>
+                    <button class="admin-btn small success" id="ordersMarkDoneBtn" type="button">标记已完成</button>
+                </div>
+                <div class="table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="ordersCheckAll" aria-label="全选订单"></th>
+                                <th>订单号</th>
+                                <th>客户</th>
+                                <th>金额</th>
+                                <th>状态</th>
+                                <th>日期</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody"></tbody>
+                    </table>
+                </div>
+                <div id="ordersTableMeta" class="admin-footer-note"></div>
+            </section>
+        </main>
+    </div>
+
+    <section id="orderDetailModal" class="modal-backdrop" aria-hidden="true">
+        <article class="modal-card neu-card" role="dialog" aria-modal="true" aria-labelledby="orderDetailTitle">
+            <div class="panel-head">
+                <h2 id="orderDetailTitle">订单详情</h2>
+                <button id="closeOrderModalBtn" class="admin-btn small danger" type="button">关闭</button>
+            </div>
+            <div class="simple-list" id="orderDetailContent"></div>
+        </article>
+    </section>
+
+    <script src="assets/js/admin-mock-cn.js"></script>
+</body>
+</html>
+

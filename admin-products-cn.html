@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camel 商品管理</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/module-css/admin-neumorphism.css" rel="stylesheet">
+</head>
+<body class="admin-body" data-admin-protected="true">
+    <div class="admin-layout">
+        <aside class="admin-sidebar neu-card" aria-label="管理侧边栏">
+            <div>
+                <div class="admin-logo">Camel 管理后台</div>
+                <div class="admin-subtitle">模拟管理面板 · 软 UI 风格</div>
+            </div>
+            <nav class="admin-nav" aria-label="后台导航">
+                <a href="admin-cn.html">总览</a>
+                <a class="active" href="admin-products-cn.html">商品</a>
+                <a href="admin-orders-cn.html">订单</a>
+                <a href="admin-users-cn.html">用户</a>
+                <a href="admin-settings-cn.html">设置</a>
+                <a href="index-cn.html">返回网站</a>
+            </nav>
+            <button id="adminLogoutBtn" class="admin-btn danger" type="button">退出登录</button>
+        </aside>
+
+        <main class="admin-shell">
+            <header class="admin-topbar neu-card">
+                <h1>商品管理</h1>
+                <div class="admin-user">
+                    <span>当前登录：</span>
+                    <strong id="adminSessionUser">Admin</strong>
+                </div>
+            </header>
+
+            <section class="panel neu-card">
+                <h2>新增模拟商品</h2>
+                <form id="productAddForm" novalidate>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="productId">商品编码</label>
+                            <input id="productId" required>
+                        </div>
+                        <div class="field">
+                            <label for="productName">商品名称</label>
+                            <input id="productName" required>
+                        </div>
+                        <div class="field">
+                            <label for="productCategory">分类</label>
+                            <input id="productCategory">
+                        </div>
+                        <div class="field">
+                            <label for="productPrice">价格</label>
+                            <input id="productPrice" type="number" min="0">
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="productStock">库存</label>
+                            <input id="productStock" type="number" min="0">
+                        </div>
+                        <div class="field">
+                            <label for="productStatus">状态</label>
+                            <select id="productStatus">
+                                <option value="active">启用</option>
+                                <option value="inactive">停用</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="productImage">商品图片（URL）</label>
+                            <input id="productImage" type="url" placeholder="https://...">
+                        </div>
+                    </div>
+                    <button class="admin-btn primary" type="submit">新增商品</button>
+                    <div id="productFormNotice" class="admin-footer-note" aria-live="polite"></div>
+                </form>
+            </section>
+
+            <section class="panel neu-card" style="margin-top:16px;">
+                <h2>商品列表</h2>
+                <div class="filters triple">
+                    <input id="productSearchInput" type="text" placeholder="按编码或名称搜索...">
+                    <select id="productStatusFilter">
+                        <option value="all">全部状态</option>
+                        <option value="active">启用</option>
+                        <option value="inactive">停用</option>
+                    </select>
+                    <select id="productSortFilter">
+                        <option value="latest">最新</option>
+                        <option value="price_asc">价格升序</option>
+                        <option value="price_desc">价格降序</option>
+                        <option value="stock_asc">库存升序</option>
+                        <option value="stock_desc">库存降序</option>
+                    </select>
+                </div>
+                <div class="table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>名称</th>
+                                <th>分类</th>
+                                <th>价格</th>
+                                <th>库存</th>
+                                <th>状态</th>
+                                <th>Ảnh</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody"></tbody>
+                    </table>
+                </div>
+                <div class="helper-row">
+                    <div class="admin-footer-note" id="productTableMeta"></div>
+                    <div class="pagination">
+                        <button class="admin-btn small" id="productPrevPageBtn" type="button">上一页</button>
+                        <span id="productPageInfo" class="admin-footer-note">Trang 1/1</span>
+                        <button class="admin-btn small" id="productNextPageBtn" type="button">下一页</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel neu-card" style="margin-top:16px;">
+                <h2>编辑商品</h2>
+                <form id="productEditForm" novalidate>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="editProductId">商品编码</label>
+                            <input id="editProductId" readonly>
+                        </div>
+                        <div class="field">
+                            <label for="editProductName">商品名称</label>
+                            <input id="editProductName" required>
+                        </div>
+                        <div class="field">
+                            <label for="editProductCategory">分类</label>
+                            <input id="editProductCategory">
+                        </div>
+                        <div class="field">
+                            <label for="editProductPrice">价格</label>
+                            <input id="editProductPrice" type="number" min="0">
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="editProductStock">库存</label>
+                            <input id="editProductStock" type="number" min="0">
+                        </div>
+                        <div class="field">
+                            <label for="editProductStatus">状态</label>
+                            <select id="editProductStatus">
+                                <option value="active">启用</option>
+                                <option value="inactive">停用</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="editProductImage">商品图片（URL）</label>
+                            <input id="editProductImage" type="url" placeholder="https://...">
+                        </div>
+                    </div>
+                    <div class="table-actions">
+                        <button class="admin-btn success" type="submit">保存修改</button>
+                        <button class="admin-btn warning" id="resetEditProductBtn" type="button">重置表单</button>
+                    </div>
+                    <div id="productEditNotice" class="admin-footer-note" aria-live="polite"></div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/admin-mock-cn.js"></script>
+</body>
+</html>
+
