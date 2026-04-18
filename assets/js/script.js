@@ -1,6 +1,27 @@
 (function($) {
 	
 	"use strict";
+
+	// Preloader hard fallback (avoid stuck screen on first-load/cache-clear)
+	(function () {
+		function forceHidePreloader() {
+			var el = document.querySelector('.loader-wrap');
+			if (!el) return;
+			el.style.opacity = '0';
+			el.style.visibility = 'hidden';
+			setTimeout(function () { el.style.display = 'none'; }, 450);
+		}
+
+		window.addEventListener('load', function () {
+			setTimeout(forceHidePreloader, 300);
+		});
+
+		window.addEventListener('pageshow', function () {
+			setTimeout(forceHidePreloader, 100);
+		});
+
+		setTimeout(forceHidePreloader, 5000);
+	})();
 	
 	//Hide Loading Box (Preloader)
 	function handlePreloader() {
