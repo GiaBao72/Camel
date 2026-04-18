@@ -58,7 +58,7 @@
                     total: 459000,
                     status: 'shipping',
                     date: '2026-04-17',
-                    note: '已电话确认订单。',
+                    note: '已电话确认订单.',
                     items: [
                         { name: '离子吹风机 Pro', qty: 1, price: 459000 }
                     ]
@@ -69,7 +69,7 @@
                     total: 199000,
                     status: 'done',
                     date: '2026-04-16',
-                    note: '订单已完成，客户满意。',
+                    note: '订单已完成,客户满意.',
                     items: [
                         { name: '迷你手持风扇 Turbo', qty: 1, price: 199000 }
                     ]
@@ -106,7 +106,7 @@
                 heroBannerTitle: 'Flash Sale 4.4 - Mua nhanh kẻo lỡ'
             },
             revenueSeries: createRevenueSeries(),
-            updatedAt: new Date(）。toISOString()
+            updatedAt: new Date().toISOString()
         };
     }
 
@@ -120,9 +120,9 @@
         ];
 
         var orderSeeds = [
-            { id: 'OD-9004', customer: 'Phạm Thu / 范秋', total: 798000, status: 'pending', date: '2026-04-15', note: 'Giao giờ hành chính / 工作时间配送。', items: [{ name: 'Đèn ngủ cảm ứng Luna / 露娜感应夜灯', qty: 2, price: 289000 }, { name: 'Pin sạc dự phòng 20.000mAh / 2万毫安充电宝', qty: 1, price: 399000 }] },
-            { id: 'OD-9005', customer: 'Võ Long / 武龙', total: 629000, status: 'shipping', date: '2026-04-14', note: 'Khách yêu cầu gọi trước khi giao / 送货前请先电话联系。', items: [{ name: 'Tai nghe Bluetooth AirBeat / AirBeat 蓝牙耳机', qty: 1, price: 629000 }] },
-            { id: 'OD-9006', customer: 'Hà An / 何安', total: 1048000, status: 'done', date: '2026-04-13', note: 'Đã nhận đủ hàng / 已完整收货。', items: [{ name: 'Máy xay mini cầm tay / 迷你手持搅拌机', qty: 1, price: 349000 }, { name: 'Bàn chải điện Sonic+ / Sonic+ 电动牙刷', qty: 1, price: 529000 }, { name: 'Combo phụ kiện điện thoại 5in1 / 5合1手机配件套装', qty: 1, price: 170000 }] }
+            { id: 'OD-9004', customer: 'Phạm Thu / 范秋', total: 798000, status: 'pending', date: '2026-04-15', note: 'Giao giờ hành chính / 工作时间配送.', items: [{ name: 'Đèn ngủ cảm ứng Luna / 露娜感应夜灯', qty: 2, price: 289000 }, { name: 'Pin sạc dự phòng 20.000mAh / 2万毫安充电宝', qty: 1, price: 399000 }] },
+            { id: 'OD-9005', customer: 'Võ Long / 武龙', total: 629000, status: 'shipping', date: '2026-04-14', note: 'Khách yêu cầu gọi trước khi giao / 送货前请先电话联系.', items: [{ name: 'Tai nghe Bluetooth AirBeat / AirBeat 蓝牙耳机', qty: 1, price: 629000 }] },
+            { id: 'OD-9006', customer: 'Hà An / 何安', total: 1048000, status: 'done', date: '2026-04-13', note: 'Đã nhận đủ hàng / 已完整收货.', items: [{ name: 'Máy xay mini cầm tay / 迷你手持搅拌机', qty: 1, price: 349000 }, { name: 'Bàn chải điện Sonic+ / Sonic+ 电动牙刷', qty: 1, price: 529000 }, { name: 'Combo phụ kiện điện thoại 5in1 / 5合1手机配件套装', qty: 1, price: 170000 }] }
         ];
 
         var userSeeds = [
@@ -159,7 +159,7 @@
         for (var i = 6; i >= 0; i -= 1) {
             var d = new Date(now);
             d.setDate(now.getDate() - i);
-            labels.push(String(d.getDate()）。padStart(2, '0') + '/' + String(d.getMonth() + 1）。padStart(2, '0'));
+            labels.push(String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth() + 1).padStart(2, '0'));
             values.push(1200000 + Math.floor(Math.random() * 2300000));
         }
         return { labels: labels, values: values };
@@ -189,7 +189,7 @@
                 customer: o.customer || '其他h lẻ',
                 total: Number(o.total || 0),
                 status: o.status || 'pending',
-                date: o.date || new Date(）。toISOString(）。slice(0, 10),
+                date: o.date || new Date().toISOString().slice(0, 10),
                 note: o.note || '',
                 items: Array.isArray(o.items) ? o.items : []
             };
@@ -226,7 +226,7 @@
     }
 
     function saveData(data) {
-        data.updatedAt = new Date(）。toISOString();
+        data.updatedAt = new Date().toISOString();
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     }
 
@@ -275,7 +275,7 @@
     }
 
     function numberFormat(value) {
-        return new Intl.NumberFormat('vi-VN'）。format(value || 0);
+        return new Intl.NumberFormat('vi-VN').format(value || 0);
     }
 
     function currency(value) {
@@ -344,8 +344,8 @@
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-            var email = document.getElementById('loginEmail'）。value.trim();
-            var password = document.getElementById('loginPassword'）。value.trim();
+            var email = document.getElementById('loginEmail').value.trim();
+            var password = document.getElementById('loginPassword').value.trim();
             var message = document.getElementById('loginMessage');
 
             if (email === 'admin@camel.local' && password === '123456') {
@@ -353,7 +353,7 @@
                     email: email,
                     name: '示例管理员',
                     role: 'owner',
-                    loginAt: new Date(）。toISOString()
+                    loginAt: new Date().toISOString()
                 });
                 window.location.href = DASHBOARD_PATH;
                 return;
@@ -456,16 +456,16 @@
                 return Number(p.stock) <= 10;
             });
             if (!lowStocks.length) {
-                stockAlerts.innerHTML = '<div class="kpi-item">库存稳定，暂无预警。</div>';
+                stockAlerts.innerHTML = '<div class="kpi-item">库存稳定,暂无预警.</div>';
             } else {
                 stockAlerts.innerHTML = lowStocks.map(function (p) {
                     return '<div class="kpi-item"><strong>' + escapeHtml(p.name) + '</strong> 剩余 ' + p.stock + ' 件</div>';
-                }）。join('');
+                }).join('');
             }
         }
 
         if (latestOrders) {
-            latestOrders.innerHTML = data.orders.slice(0, 5）。map(function (order) {
+            latestOrders.innerHTML = data.orders.slice(0, 5).map(function (order) {
                 return '<tr>' +
                     '<td>' + escapeHtml(order.id) + '</td>' +
                     '<td>' + escapeHtml(order.customer) + '</td>' +
@@ -473,7 +473,7 @@
                     '<td><span class="badge ' + statusBadge(order.status) + '">' + escapeHtml(statusLabel(order.status)) + '</span></td>' +
                     '<td>' + escapeHtml(order.date) + '</td>' +
                     '</tr>';
-            }）。join('');
+            }).join('');
         }
 
         drawRevenueChart(data.revenueSeries);
@@ -486,7 +486,7 @@
                 data.revenueSeries = createRevenueSeries();
                 saveData(data);
                 drawRevenueChart(data.revenueSeries);
-                toast('已重建模拟营收数据。', 'success');
+                toast('已重建模拟营收数据.', 'success');
             });
         }
 
@@ -496,7 +496,7 @@
                 // mock: vẫn dữ liệu 7 ngày, chỉ cập nhật text mô phỏng
                 var summary = document.getElementById('revenueSummary');
                 if (summary) {
-                    summary.textContent += ' · Bộ lọc: ' + revenueRangeFilter.value + ' ngày (mô phỏng）。';
+                    summary.textContent += ' · Bộ lọc: ' + revenueRangeFilter.value + ' ngày (mô phỏng).';
                 }
             });
         }
@@ -556,12 +556,12 @@
         }
 
         function getFiltered() {
-            var keyword = searchInput ? searchInput.value.trim(）。toLowerCase() : '';
+            var keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
             var status = statusFilter ? statusFilter.value : 'all';
             var sortValue = sortFilter ? sortFilter.value : 'latest';
 
             var filtered = data.products.filter(function (p) {
-                var textMatch = !keyword || p.name.toLowerCase(）。indexOf(keyword) >= 0 || p.id.toLowerCase(）。indexOf(keyword) >= 0;
+                var textMatch = !keyword || p.name.toLowerCase().indexOf(keyword) >= 0 || p.id.toLowerCase().indexOf(keyword) >= 0;
                 var statusMatch = status === 'all' || p.status === status;
                 return textMatch && statusMatch;
             });
@@ -599,11 +599,11 @@
                         '<button class="admin-btn small danger" data-action="delete" data-id="' + escapeHtml(p.id) + '">删除</button>' +
                         '</div></td>' +
                         '</tr>';
-                }）。join('');
+                }).join('');
             }
 
             if (pageInfo) pageInfo.textContent = '第 ' + currentPage + '/' + totalPages;
-            if (tableMeta) tableMeta.textContent = '显示 ' + pageRows.length + '/' + filtered.length + ' 件 (tổng kho: ' + data.products.length + '）。';
+            if (tableMeta) tableMeta.textContent = '显示 ' + pageRows.length + '/' + filtered.length + ' 件 (tổng kho: ' + data.products.length + ').';
             if (prevBtn) prevBtn.disabled = currentPage <= 1;
             if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
         }
@@ -635,7 +635,7 @@
                     return p.id !== id;
                 });
                 if (editId && editId.value === id) {
-                    resetEditForm('已删除商品，并同步清空编辑表单。');
+                    resetEditForm('已删除商品,并同步清空编辑表单.');
                 }
             }
 
@@ -665,13 +665,13 @@
         if (addForm) {
             addForm.addEventListener('submit', function (event) {
                 event.preventDefault();
-                var id = document.getElementById('productId'）。value.trim();
-                var name = document.getElementById('productName'）。value.trim();
-                var category = document.getElementById('productCategory'）。value.trim();
-                var price = Number(document.getElementById('productPrice'）。value || 0);
-                var stock = Number(document.getElementById('productStock'）。value || 0);
-                var status = document.getElementById('productStatus'）。value;
-                var image = document.getElementById('productImage'）。value.trim();
+                var id = document.getElementById('productId').value.trim();
+                var name = document.getElementById('productName').value.trim();
+                var category = document.getElementById('productCategory').value.trim();
+                var price = Number(document.getElementById('productPrice').value || 0);
+                var stock = Number(document.getElementById('productStock').value || 0);
+                var status = document.getElementById('productStatus').value;
+                var image = document.getElementById('productImage').value.trim();
                 var notice = document.getElementById('productFormNotice');
 
                 if (!id || !name) {
@@ -732,7 +732,7 @@
 
         if (resetEditBtn) {
             resetEditBtn.addEventListener('click', function () {
-                resetEditForm('编辑表单已重置。');
+                resetEditForm('编辑表单已重置.');
             });
         }
 
@@ -766,10 +766,10 @@
         }
 
         function filteredOrders() {
-            var keyword = searchInput ? searchInput.value.trim(）。toLowerCase() : '';
+            var keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
             var status = statusFilter ? statusFilter.value : 'all';
             return data.orders.filter(function (order) {
-                var textMatch = !keyword || order.id.toLowerCase(）。indexOf(keyword) >= 0 || order.customer.toLowerCase(）。indexOf(keyword) >= 0;
+                var textMatch = !keyword || order.id.toLowerCase().indexOf(keyword) >= 0 || order.customer.toLowerCase().indexOf(keyword) >= 0;
                 var statusMatch = status === 'all' || order.status === status;
                 return textMatch && statusMatch;
             });
@@ -779,8 +779,8 @@
             var list = filteredOrders();
 
             if (!list.length) {
-                tableBody.innerHTML = '<tr><td colspan="6">没有匹配的订单。</td></tr>';
-                if (tableMeta) tableMeta.textContent = '0 条订单匹配筛选。';
+                tableBody.innerHTML = '<tr><td colspan="6">没有匹配的订单.</td></tr>';
+                if (tableMeta) tableMeta.textContent = '0 条订单匹配筛选.';
                 return;
             }
 
@@ -802,9 +802,9 @@
                     '<button class="admin-btn small" data-action="detail" data-id="' + escapeHtml(order.id) + '">详情</button>' +
                     '</div></td>' +
                     '</tr>';
-            }）。join('');
+            }).join('');
 
-            if (tableMeta) tableMeta.textContent = list.length + '/' + data.orders.length + ' 条订单正在显示。';
+            if (tableMeta) tableMeta.textContent = list.length + '/' + data.orders.length + ' 条订单正在显示.';
         }
 
         tableBody.addEventListener('change', function (event) {
@@ -830,9 +830,9 @@
             var order = data.orders.find(function (item) { return item.id === id; });
             if (!order) return;
 
-            var itemsHtml = (order.items || []）。map(function (item) {
+            var itemsHtml = (order.items || []).map(function (item) {
                 return '<li>' + escapeHtml(item.name) + ' × ' + Number(item.qty || 0) + ' · ' + currency(item.price || 0) + '</li>';
-            }）。join('');
+            }).join('');
 
             modalContent.innerHTML = '' +
                 '<div class="simple-item"><strong>Mã đơn:</strong> ' + escapeHtml(order.id) + '</div>' +
@@ -867,11 +867,11 @@
                         order.total,
                         order.status,
                         order.date,
-                        (order.note || ''）。replace(/,/g, ';')
+                        (order.note || '').replace(/,/g, ';')
                     ].map(function (cell) {
-                        return '"' + String(cell）。replace(/"/g, '""') + '"';
-                    }）。join(',');
-                }）。join('\n');
+                        return '"' + String(cell).replace(/"/g, '""') + '"';
+                    }).join(',');
+                }).join('\n');
 
                 var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
                 var url = URL.createObjectURL(blob);
@@ -882,7 +882,7 @@
                 link.click();
                 document.body.removeChild(link);
                 URL.revokeObjectURL(url);
-                toast('订单 CSV 导出成功。', 'success');
+                toast('订单 CSV 导出成功.', 'success');
             });
         }
 
@@ -895,13 +895,13 @@
         }
 
         function getCheckedOrderIds() {
-            return Array.from(tableBody.querySelectorAll('.order-row-check:checked')）。map(function (c) { return c.dataset.id; });
+            return Array.from(tableBody.querySelectorAll('.order-row-check:checked')).map(function (c) { return c.dataset.id; });
         }
 
         function bulkUpdateStatus(nextStatus) {
             var ids = getCheckedOrderIds();
             if (!ids.length) {
-                toast('请至少选择 1 个订单。', 'warning');
+                toast('请至少选择 1 个订单.', 'warning');
                 return;
             }
             data.orders = data.orders.map(function (order) {
@@ -910,7 +910,7 @@
             });
             saveData(data);
             draw();
-            toast('已更新 ' + ids.length + ' 个订单。', 'success');
+            toast('已更新 ' + ids.length + ' 个订单.', 'success');
         }
 
         var btnShipping = document.getElementById('ordersMarkShippingBtn');
@@ -929,10 +929,10 @@
         if (!tableBody) return;
 
         function getFilteredUsers() {
-            var keyword = searchInput ? searchInput.value.trim(）。toLowerCase() : '';
+            var keyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
             var status = statusFilter ? statusFilter.value : 'all';
             return data.users.filter(function (user) {
-                var textMatch = !keyword || user.name.toLowerCase(）。indexOf(keyword) >= 0 || user.email.toLowerCase(）。indexOf(keyword) >= 0;
+                var textMatch = !keyword || user.name.toLowerCase().indexOf(keyword) >= 0 || user.email.toLowerCase().indexOf(keyword) >= 0;
                 var statusMatch = status === 'all' || user.status === status;
                 return textMatch && statusMatch;
             });
@@ -948,28 +948,28 @@
                     '<td>' + escapeHtml(roleLabel(user.role)) + '</td>' +
                     '<td><span class="badge ' + statusBadge(user.status) + '">' + escapeHtml(statusLabel(user.status)) + '</span></td>' +
                     '</tr>';
-            }）。join('') || '<tr><td colspan="5">无 người dùng phù hợp.</td></tr>';
+            }).join('') || '<tr><td colspan="5">无 người dùng phù hợp.</td></tr>';
         }
 
         if (addForm) {
             addForm.addEventListener('submit', function (event) {
                 event.preventDefault();
-                var id = document.getElementById('userId'）。value.trim();
-                var name = document.getElementById('userName'）。value.trim();
-                var email = document.getElementById('userEmail'）。value.trim();
-                var role = document.getElementById('userRole'）。value;
-                var status = document.getElementById('userStatus'）。value;
+                var id = document.getElementById('userId').value.trim();
+                var name = document.getElementById('userName').value.trim();
+                var email = document.getElementById('userEmail').value.trim();
+                var role = document.getElementById('userRole').value;
+                var status = document.getElementById('userStatus').value;
                 var notice = document.getElementById('userFormNotice');
 
                 if (!id || !name || !email) {
-                    if (notice) notice.textContent = '请填写用户编号、姓名和邮箱。';
-                    toast('用户信息不完整。', 'warning');
+                    if (notice) notice.textContent = '请填写用户编号、姓名和邮箱.';
+                    toast('用户信息不完整.', 'warning');
                     return;
                 }
 
                 if (data.users.some(function (u) { return u.id === id; })) {
-                    if (notice) notice.textContent = '用户编号已存在。';
-                    toast('用户编号已存在。', 'danger');
+                    if (notice) notice.textContent = '用户编号已存在.';
+                    toast('用户编号已存在.', 'danger');
                     return;
                 }
 
@@ -982,8 +982,8 @@
                 });
                 saveData(data);
                 addForm.reset();
-                if (notice) notice.textContent = '已新增模拟用户。';
-                toast('已新增用户。', 'success');
+                if (notice) notice.textContent = '已新增模拟用户.';
+                toast('已新增用户.', 'success');
                 draw();
             });
         }
@@ -998,22 +998,22 @@
         var form = document.getElementById('settingsForm');
         if (!form) return;
 
-        document.getElementById('settingSiteName'）。value = data.settings.siteName || '';
-        document.getElementById('settingSupportEmail'）。value = data.settings.supportEmail || '';
-        document.getElementById('settingShippingFee'）。value = data.settings.shippingFee || 0;
-        document.getElementById('settingDiscount'）。value = data.settings.discountDefault || 0;
-        document.getElementById('settingBanner'）。value = data.settings.heroBannerTitle || '';
+        document.getElementById('settingSiteName').value = data.settings.siteName || '';
+        document.getElementById('settingSupportEmail').value = data.settings.supportEmail || '';
+        document.getElementById('settingShippingFee').value = data.settings.shippingFee || 0;
+        document.getElementById('settingDiscount').value = data.settings.discountDefault || 0;
+        document.getElementById('settingBanner').value = data.settings.heroBannerTitle || '';
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-            data.settings.siteName = document.getElementById('settingSiteName'）。value.trim();
-            data.settings.supportEmail = document.getElementById('settingSupportEmail'）。value.trim();
-            data.settings.shippingFee = Number(document.getElementById('settingShippingFee'）。value || 0);
-            data.settings.discountDefault = Number(document.getElementById('settingDiscount'）。value || 0);
-            data.settings.heroBannerTitle = document.getElementById('settingBanner'）。value.trim();
+            data.settings.siteName = document.getElementById('settingSiteName').value.trim();
+            data.settings.supportEmail = document.getElementById('settingSupportEmail').value.trim();
+            data.settings.shippingFee = Number(document.getElementById('settingShippingFee').value || 0);
+            data.settings.discountDefault = Number(document.getElementById('settingDiscount').value || 0);
+            data.settings.heroBannerTitle = document.getElementById('settingBanner').value.trim();
             saveData(data);
             var notice = document.getElementById('settingsNotice');
-            if (notice) notice.textContent = '模拟配置已保存到 localStorage。';
+            if (notice) notice.textContent = '模拟配置已保存到 localStorage.';
         });
     }
 
